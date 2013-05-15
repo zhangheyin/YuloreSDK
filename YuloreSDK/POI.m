@@ -20,7 +20,7 @@
 @synthesize subtitle = _subtitle;
 @synthesize title = _title;
 - (id)initWithCoordinate2D:(CLLocationCoordinate2D)coordinate
-                    title:(NSString*)title
+                     title:(NSString*)title
                   subtitle:(NSString*)subtitle {
   
 	self = [super init];

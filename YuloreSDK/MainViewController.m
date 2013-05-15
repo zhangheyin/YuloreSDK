@@ -6,6 +6,8 @@
 //  Copyright (c) 2013年 Yulore. All rights reserved.
 //
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
+#define DARK_BACKGROUND_COLOR   [UIColor colorWithWhite:235.0f/255.0f alpha:1.0f]
+#define LIGHT_BACKGROUND_COLOR  [UIColor colorWithWhite:245.0f/255.0f alpha:1.0f]
 #import "Quotation.h"
 @interface QuoteCell : UITableViewCell
 
@@ -445,7 +447,7 @@
 }
 
 - (void)viewDidUnload {
-  
+  			
   [super viewDidUnload];
   
   // To reduce memory pressure, reset the section info array if the view is unloaded.
