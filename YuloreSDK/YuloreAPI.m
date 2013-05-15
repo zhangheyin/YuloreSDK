@@ -10,16 +10,16 @@
 #import "JSONKit.h"
 @implementation YuloreAPI
 
-+ (NSMutableArray *)cityList {
-  NSArray *cityNameArray = [NSArray arrayWithObjects:@"杭州",@"林芝",@"台北",@"大理",@"巴塞罗那",@"伦敦",@"济南",@"北海道",@"墨尔本",@"重庆",@"银川",@"兰州",@"西安",@"乌鲁木齐",@"长沙",@"武汉",@"洛阳",@"桂林",@"呼和浩特",@"澳门",@"香港",@"沈阳",@"北京",@"杭州",@"林芝",@"台北",@"大理",@"巴塞罗那",@"伦敦",@"济南",@"北海道",@"墨尔本",@"重庆",@"银川",@"兰州",@"西安",@"乌鲁木齐",@"长沙",@"武汉",@"洛阳",@"桂林",@"呼和浩特",@"澳门",@"香港",@"沈阳",@"北京",@"杭州",@"林芝",@"台北",@"大理",@"巴塞罗那",@"伦敦",@"济南",@"北海道",@"墨尔本",@"重庆",@"银川",@"兰州",@"西安",@"乌鲁木齐",@"长沙",@"武汉",@"洛阳",@"桂林",@"呼和浩特",@"澳门",@"香港",@"沈阳",@"北京", nil];
-  NSMutableArray *cityArray = [[[NSMutableArray alloc] init] autorelease];
-  for (int i = 0; i < [cityNameArray count]; i++) {
-    NSDictionary *aCity = @{[cityNameArray objectAtIndex:i]: [NSString stringWithFormat:@"%d", i]};
-    [cityArray addObject:aCity];
-  }
-  
-  return cityArray;
-}
+//+ (NSMutableArray *)cityList {
+//  NSArray *cityNameArray = [NSArray arrayWithObjects:@"杭州",@"林芝",@"台北",@"大理",@"巴塞罗那",@"伦敦",@"济南",@"北海道",@"墨尔本",@"重庆",@"银川",@"兰州",@"西安",@"乌鲁木齐",@"长沙",@"武汉",@"洛阳",@"桂林",@"呼和浩特",@"澳门",@"香港",@"沈阳",@"北京",@"杭州",@"林芝",@"台北",@"大理",@"巴塞罗那",@"伦敦",@"济南",@"北海道",@"墨尔本",@"重庆",@"银川",@"兰州",@"西安",@"乌鲁木齐",@"长沙",@"武汉",@"洛阳",@"桂林",@"呼和浩特",@"澳门",@"香港",@"沈阳",@"北京",@"杭州",@"林芝",@"台北",@"大理",@"巴塞罗那",@"伦敦",@"济南",@"北海道",@"墨尔本",@"重庆",@"银川",@"兰州",@"西安",@"乌鲁木齐",@"长沙",@"武汉",@"洛阳",@"桂林",@"呼和浩特",@"澳门",@"香港",@"沈阳",@"北京", nil];
+//  NSMutableArray *cityArray = [[[NSMutableArray alloc] init] autorelease];
+//  for (int i = 0; i < [cityNameArray count]; i++) {
+//    NSDictionary *aCity = @{[cityNameArray objectAtIndex:i]: [NSString stringWithFormat:@"%d", i]};
+//    [cityArray addObject:aCity];
+//  }
+//  
+//  return cityArray;
+//}
 
 
 + (NSArray *)wholeCityList {

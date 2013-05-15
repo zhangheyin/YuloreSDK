@@ -13,7 +13,7 @@
 + (NSMutableArray *)executeSearch:(NSString *)keyWord;
 + (NSMutableArray *)executeSearch2:(NSString *)keyWord;
 + (void) yuloreCategory;
-+ (NSMutableArray *)cityList;
+//+ (NSMutableArray *)cityList;
 + (NSMutableArray *)executeSearch3:(NSMutableDictionary *)searchCondition;
 
 + (NSMutableArray *)hotCityList;
