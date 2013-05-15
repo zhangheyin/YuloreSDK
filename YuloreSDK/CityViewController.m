@@ -357,7 +357,7 @@ shouldReloadTableForSearchString:(NSString *)searchString {
   BOOL type = NO;
   int alength = [inputString length];
   for (int i = 0; i<alength; i++) {
-    char commitChar = [inputString characterAtIndex:i];
+  //  char commitChar = [inputString characterAtIndex:i];
     NSString *temp = [inputString substringWithRange:NSMakeRange(i,1)];
     const char *u8Temp = [temp UTF8String];
     if (3 == strlen(u8Temp)){

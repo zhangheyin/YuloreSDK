@@ -97,9 +97,7 @@
     if (numberOfResult != nil) {
       [paraArray addObject:[NSString stringWithFormat:@"n=%@",numberOfResult]];
     }
-    
-    
-    
+
     BOOL useCoordinate = NO;
     if (order != nil) {
       if ([order intValue] != 0) {
@@ -429,7 +427,7 @@
   NSData *jsonData = [[NSString stringWithContentsOfURL:[NSURL URLWithString:urlString] encoding:NSUTF8StringEncoding
                                                   error:nil] dataUsingEncoding:NSUTF8StringEncoding];
   NSError *error = nil;
-  NSDictionary *results = jsonData ? [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers|NSJSONReadingMutableLeaves error:&error] : nil;
+//  NSDictionary *results = jsonData ? [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers|NSJSONReadingMutableLeaves error:&error] : nil;
   if (error) NSLog(@"[%@ %@] JSON error: %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), error.localizedDescription);
   
   return urlString;
