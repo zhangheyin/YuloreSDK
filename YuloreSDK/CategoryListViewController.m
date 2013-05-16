@@ -105,7 +105,7 @@
   //dappObject.appId = 99;
   //dappObject.artistId = 12;
   dappObject.name = [aCategory objectForKey:@"name"];
-  dappObject.genre = [aCategory objectForKey:@"address"];
+  dappObject.genre =  ([[aCategory objectForKey:@"address"] isKindOfClass:[NSNull class]]) ? @"无" : [aCategory objectForKey:@"address"];//[aCategory objectForKey:@"address"];
  // dappObject.iconIsPrerendered = YES;
   dappObject.userRatingCount = 4;
    static NSString *CellIdentifier = @"Cell";

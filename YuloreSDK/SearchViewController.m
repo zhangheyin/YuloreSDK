@@ -150,7 +150,8 @@ static NSString *kSaveKeyMarkerLines = @"SaveKeyMarkerLines";
   //frame应在表格加载完数据源之后再设置
 
   [super viewDidAppear:animated];
-  [self.navigationController setNavigationBarHidden:NO];
+ 
+  //[self.navigationController setNavigationBarHidden:NO];
 }
 - (void)viewWillAppear:(BOOL)animated{
   [super viewWillAppear:animated];
@@ -288,7 +289,7 @@ shouldReloadTableForSearchString:(NSString *)searchString {
   dispatch_queue_t q = dispatch_queue_create("queue", 0);
   dispatch_async(q, ^{
     NSMutableArray *filterArray = [self filterContentForSearchText:[self.searchDisplayController.searchBar text]
-                                                             scope:[[self.searchDisplayController.searchBar scopeButtonTitles]                                       objectAtIndex:searchOption]];
+           	                                                  scope:[[self.searchDisplayController.searchBar scopeButtonTitles]                                       objectAtIndex:searchOption]];
     dispatch_async(dispatch_get_main_queue(), ^{
       [self.searchResults removeAllObjects];
       self.searchResults = filterArray;

@@ -166,7 +166,7 @@
   NSArray *level1Category = [apiCategory level1Category];
   NSMutableArray *playsArray = [NSMutableArray arrayWithCapacity:[level1Category count]];
   for (NSDictionary *aLeve1Category in level1Category) {
-    NSLog(@"%@", aLeve1Category);
+   // NSLog(@"%@", aLeve1Category);
     Play *play = [[[Play alloc] init] autorelease];
     play.name = [aLeve1Category objectForKey:@"name"];
     
@@ -323,11 +323,11 @@
   UITableViewRowAnimation insertAnimation;
   UITableViewRowAnimation deleteAnimation;
   if (previousOpenSectionIndex == NSNotFound || sectionOpened < previousOpenSectionIndex) {
-    insertAnimation = UITableViewRowAnimationTop;
-    deleteAnimation = UITableViewRowAnimationBottom;
+    insertAnimation = UITableViewRowAnimationFade;
+    deleteAnimation = UITableViewRowAnimationFade;
   } else {
-    insertAnimation = UITableViewRowAnimationBottom;
-    deleteAnimation = UITableViewRowAnimationTop;
+    insertAnimation = UITableViewRowAnimationFade;
+    deleteAnimation = UITableViewRowAnimationFade;
   }
   
   // Apply the updates.

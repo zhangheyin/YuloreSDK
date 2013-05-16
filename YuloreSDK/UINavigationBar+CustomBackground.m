@@ -54,7 +54,7 @@
 //
 //- (UIImage *)barBackground
 //{
-//  return [UIImage imageNamed:@"titlebar_bg.jpg"];
+//  return [ imageNamed:@"titlebar_bg.jpg"];
 //}
 //
 //- (void)didMoveToSuperview

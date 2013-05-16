@@ -8,10 +8,9 @@
 
 #import "AppDelegate.h"
 #import "UINavigationBar+CustomBackground.h"
-#import "Reachability.h"
-
+#import "AHReach.h"
 @interface AppDelegate()<UIAlertViewDelegate> {
-  Reachability* internetReach;
+ 
 }
 @end
 
@@ -26,76 +25,41 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-  
-  [[NSNotificationCenter defaultCenter] addObserver: self selector: @selector(reachabilityChanged:) name: kReachabilityChangedNotification object: nil];
-  
-  //Change the host name here to change the server your monitoring
- // remoteHostLabel.text = [NSString stringWithFormat: @"Remote Host: %@", @"www.apple.com"];
-  internetReach = [[Reachability reachabilityForInternetConnection] retain];
-	[internetReach startNotifier];
-	[self updateInterfaceWithReachability: internetReach];
-  
-  
-  
-  [self createSearchHistory];
-  self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
-  // Override point for customization after application launch.
-  self.mainViewController = [[[MainViewController alloc] initWithNibName:nil bundle:nil] autorelease];
-  UINavigationController *aNavigationController = [[UINavigationController alloc] initWithRootViewController:self.mainViewController];
-  
-  [aNavigationController.navigationBar applyCustomTintColor];
-  self.window.rootViewController = aNavigationController;
-  [aNavigationController release];
-  
-  
-  
-  
-  self.window.backgroundColor = [UIColor whiteColor];
-  [self.window makeKeyAndVisible];
-  return YES;
-}
+  NSLog(@"didFinishLaunchingWithOptions");
+  AHReach *hostReach = [AHReach reachForHost:@"www.yulore.com"];
+	[hostReach startUpdatingWithBlock:^(AHReach *reach) {
+    NSLog(@"%@", reach);
+		BOOL status = [self updateAvailabilityWithReach:reach];
+    
+    if (status == NO) {
+      UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil
+                                                          message:@"网络链接失败"
+                                                         delegate:nil
+                                                cancelButtonTitle:nil
+                                                otherButtonTitles:@"OK", nil];
+      [alertView show];
+    } else {
+      [self createSearchHistory];
+      self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
+      // Override point for customization after application launch.
+      self.mainViewController = [[[MainViewController alloc] initWithNibName:nil bundle:nil] autorelease];
+      UINavigationController *aNavigationController = [[UINavigationController alloc] initWithRootViewController:self.mainViewController];
+      
+      [aNavigationController.navigationBar applyCustomTintColor];
+      self.window.rootViewController = aNavigationController;
+      [aNavigationController release];
+      
+      
+      
+      
+      self.window.backgroundColor = [UIColor whiteColor];
+      [self.window makeKeyAndVisible];
+    }
+    
+    
+	}];
 
-- (void) updateInterfaceWithReachability: (Reachability*) curReach
-{
-  if(curReach == internetReach)
-	{
-    NetworkStatus netStatus = [curReach currentReachabilityStatus];
-    BOOL connectionRequired= [curReach connectionRequired];
-    NSString* statusString= @"";
-    switch (netStatus)
-    {
-      case NotReachable:
-      {
-        statusString = @"Access Not Available";
-        connectionRequired= NO;
-        
-        UIAlertView *aleartView = [[UIAlertView alloc] initWithTitle:@"" message:statusString delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
-        
-        [aleartView show];
-        break;
-      }
-        
-      case ReachableViaWWAN:
-      {
-        statusString = @"Reachable WWAN";
-        break;
-      }
-      case ReachableViaWiFi:
-      {
-        statusString= @"Reachable WiFi";
-        break;
-      }
-    }
-    if(connectionRequired)
-    {
-      statusString= [NSString stringWithFormat: @"%@, Connection Required", statusString];
-      NSLog(@"%@", statusString);
-    }
-    //textField.text= statusString;
-    NSLog(@"%@", statusString);
-  }
-	
- 
+  return YES;
 }
 
 
@@ -113,7 +77,21 @@
      }
 }
 
-
+- (BOOL)updateAvailabilityWithReach:(AHReach *)reach {
+	
+  //field.text = @"Not reachable";
+	
+	if([reach isReachableViaWWAN])
+		NSLog(@"Available via WWAN"); //field.text = @"Available via WWAN";
+	
+	if([reach isReachableViaWiFi])
+		NSLog(@"Available via WiFi");
+  if (![reach isReachable]) {
+    NSLog(@"Available via isUNReachable");
+    return NO;
+  }
+  return YES;
+}
 
 
 
