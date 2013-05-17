@@ -86,11 +86,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "YuloreSDK/MainViewController.m"
-         timestampString = "390453699.671733"
+         timestampString = "390467202.166816"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "140"
-         endingLineNumber = "140"
+         startingLineNumber = "152"
+         endingLineNumber = "152"
          landmarkName = "-passValue:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -99,11 +99,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "YuloreSDK/MainViewController.m"
-         timestampString = "390453699.671733"
+         timestampString = "390467202.166816"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "148"
-         endingLineNumber = "148"
+         startingLineNumber = "160"
+         endingLineNumber = "160"
          landmarkName = "-currentCityName"
          landmarkType = "5">
       </FileBreakpoint>
@@ -112,11 +112,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "YuloreSDK/MainViewController.m"
-         timestampString = "390453699.671733"
+         timestampString = "390467202.166816"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "160"
-         endingLineNumber = "160"
+         startingLineNumber = "172"
+         endingLineNumber = "172"
          landmarkName = "-currentCityID"
          landmarkType = "5">
       </FileBreakpoint>
@@ -125,11 +125,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "YuloreSDK/MainViewController.m"
-         timestampString = "390453699.671733"
+         timestampString = "390467202.166816"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "280"
-         endingLineNumber = "280"
+         startingLineNumber = "292"
+         endingLineNumber = "292"
          landmarkName = "-tableView:didSelectRowAtIndexPath:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -138,11 +138,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "YuloreSDK/MainViewController.m"
-         timestampString = "390454666.856282"
+         timestampString = "390467202.166816"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "461"
-         endingLineNumber = "461"
+         startingLineNumber = "473"
+         endingLineNumber = "473"
          landmarkName = "-viewDidUnload"
          landmarkType = "5">
       </FileBreakpoint>
@@ -151,11 +151,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "YuloreSDK/SearchViewController.m"
-         timestampString = "390448012.641097"
+         timestampString = "390467663.665745"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "176"
-         endingLineNumber = "176"
+         startingLineNumber = "177"
+         endingLineNumber = "177"
          landmarkName = "-viewWillAppear:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -164,11 +164,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "YuloreSDK/SearchViewController.m"
-         timestampString = "390448012.641097"
+         timestampString = "390467663.665745"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "239"
-         endingLineNumber = "239"
+         startingLineNumber = "240"
+         endingLineNumber = "240"
          landmarkName = "-tableView:cellForRowAtIndexPath:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -177,11 +177,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "YuloreSDK/SearchViewController.m"
-         timestampString = "390448012.641097"
+         timestampString = "390467663.665745"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "335"
-         endingLineNumber = "335"
+         startingLineNumber = "336"
+         endingLineNumber = "336"
          landmarkName = "-filterContentForSearchText:scope:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -190,11 +190,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "YuloreSDK/SearchViewController.m"
-         timestampString = "390448012.641097"
+         timestampString = "390467663.665745"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "336"
-         endingLineNumber = "336"
+         startingLineNumber = "337"
+         endingLineNumber = "337"
          landmarkName = "-tableView:didSelectRowAtIndexPath:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -203,11 +203,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "YuloreSDK/SearchViewController.m"
-         timestampString = "390448012.641097"
+         timestampString = "390467663.665745"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "343"
-         endingLineNumber = "343"
+         startingLineNumber = "344"
+         endingLineNumber = "344"
          landmarkName = "-tableView:didSelectRowAtIndexPath:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -216,11 +216,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "YuloreSDK/SearchViewController.m"
-         timestampString = "390448012.641097"
+         timestampString = "390467663.665745"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "349"
-         endingLineNumber = "349"
+         startingLineNumber = "350"
+         endingLineNumber = "350"
          landmarkName = "-tableView:didSelectRowAtIndexPath:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -229,11 +229,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "YuloreSDK/SearchViewController.m"
-         timestampString = "390448012.641097"
+         timestampString = "390467663.665745"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "384"
-         endingLineNumber = "384"
+         startingLineNumber = "385"
+         endingLineNumber = "385"
          landmarkName = "-currentCityID"
          landmarkType = "5">
       </FileBreakpoint>
@@ -242,11 +242,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "YuloreSDK/SearchViewController.m"
-         timestampString = "390448012.641097"
+         timestampString = "390467663.665745"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "391"
-         endingLineNumber = "391"
+         startingLineNumber = "392"
+         endingLineNumber = "392"
          landmarkName = "-loadSearchHistory"
          landmarkType = "5">
       </FileBreakpoint>
@@ -255,11 +255,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "YuloreSDK/SearchViewController.m"
-         timestampString = "390448012.641097"
+         timestampString = "390467663.665745"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "413"
-         endingLineNumber = "413"
+         startingLineNumber = "414"
+         endingLineNumber = "414"
          landmarkName = "-saveSearchHistory:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -268,11 +268,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "YuloreSDK/SearchViewController.m"
-         timestampString = "390448012.641097"
+         timestampString = "390467663.665745"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "473"
-         endingLineNumber = "473"
+         startingLineNumber = "474"
+         endingLineNumber = "474"
          landmarkName = "@implementation SearchViewController"
          landmarkType = "3">
       </FileBreakpoint>
@@ -463,11 +463,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "YuloreSDK/MainViewController.m"
-         timestampString = "390454666.856282"
+         timestampString = "390467202.166816"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "331"
-         endingLineNumber = "331"
+         startingLineNumber = "343"
+         endingLineNumber = "343"
          landmarkName = "-sectionHeaderView:sectionOpened:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -541,11 +541,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "YuloreSDK/MainViewController.m"
-         timestampString = "390454666.856282"
+         timestampString = "390467202.166816"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "424"
-         endingLineNumber = "424"
+         startingLineNumber = "436"
+         endingLineNumber = "436"
          landmarkName = "-viewWillAppear:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -677,6 +677,19 @@
          startingLineNumber = "176"
          endingLineNumber = "176"
          landmarkName = "-pwLoadMore"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "YuloreSDK/MainViewController.m"
+         timestampString = "390467146.578894"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "132"
+         endingLineNumber = "132"
+         landmarkName = "-search"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

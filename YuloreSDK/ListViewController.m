@@ -145,7 +145,7 @@
 - (void)check {
   //data source should call this when it can load more
   //when all items loaded, set this to YES;
-  if (cellCount >= kMaxCellCount) {               // kMaxCellCount is only demo purpose
+  if (cellCount >= kMaxCellCount) { // kMaxCellCount is only demo purpose
     _allLoaded = YES;
   } else
     _allLoaded = NO;
@@ -172,10 +172,13 @@
   _datasourceIsLoading = YES;
 
   
-  /**/
+  /*update new condition*/
   [self.condition setObject:@"100" forKey:NUMBEROFRESULT];
   self.result = [YuloreAPI executeSearch3:self.condition];
+  /*update new condition*/
+  
   cellCount = [self.result count];
+  
   [self check];
 	_datasourceIsLoading = NO;
 	[self performSelector:@selector(doneLoadingTableViewData) withObject:nil afterDelay:1.0];

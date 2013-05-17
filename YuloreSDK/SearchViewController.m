@@ -152,7 +152,8 @@ static NSString *kSaveKeyMarkerLines = @"SaveKeyMarkerLines";
 
 
 - (void)returnMainViewController {
-  [self.navigationController dismissViewControllerAnimated:NO completion:nil];
+  self.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+  [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 //- (void)swicthCity{
 //

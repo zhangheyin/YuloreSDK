@@ -32,12 +32,13 @@
 		label.textAlignment = UITextAlignmentCenter;
 		[self addSubview:label];
 		_statusLabel=label;
+    [label release];
 		
 		UIActivityIndicatorView *view = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
 		view.frame = CGRectMake(52, 12, 20.0f, 20.0f);
 		[self addSubview:view];
 		_activityView = view;
-		
+		[view release];
 		[self setState:PWLoadMoreLoading];      //wait for the data source to tell me he has loaded all data
   }
 	
@@ -143,7 +144,8 @@
 #pragma mark -
 #pragma mark Dealloc
 - (void)dealloc {
-	
+	[_activityView release];
+  [_statusLabel release];
 	_delegate=nil;
   [super dealloc];
 }

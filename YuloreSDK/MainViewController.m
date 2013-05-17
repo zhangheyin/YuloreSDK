@@ -123,10 +123,22 @@
   [cityViewController release];
 }
 - (void)search {
+  
   SearchViewController *searchViewController = [[SearchViewController alloc] initWithNibName:nil bundle:nil];
+  
   UINavigationController *aNavigationController = [[UINavigationController alloc] initWithRootViewController:searchViewController];
+  
+  
   [aNavigationController.navigationBar applyCustomTintColor];
-  [self.navigationController presentViewController:aNavigationController animated:NO completion:nil];
+  
+  searchViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+
+
+
+  
+  
+  
+  [self.navigationController presentViewController:aNavigationController animated:YES completion:nil];
   [searchViewController release];
   [aNavigationController release];
 }
