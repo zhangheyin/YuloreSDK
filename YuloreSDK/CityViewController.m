@@ -98,9 +98,9 @@
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil currentCityID:(NSString *)currentCityID {
   self = [super initWithNibName:nil bundle:nil];
   if (self) {
-    self.hotCityList = [YuloreAPI hotCityList];
+    self.hotCityList = [self fetchHotCityList];
     self.currentCityID = currentCityID;
-    self.wholeCityList = [YuloreAPI wholeCityList];
+    self.wholeCityList = [self fetchCityList];
     // Custom initialization
     
     self.locationManager = [[[CLLocationManager alloc] init] autorelease];
@@ -459,5 +459,28 @@ shouldReloadTableForSearchString:(NSString *)searchString {
   [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 
+- (NSMutableArray *)fetchHotCityList{
+  NSArray *paths = NSSearchPathForDirectoriesInDomains( NSDocumentDirectory,NSUserDomainMask, YES);
+  NSString *documentsDirectory = [paths objectAtIndex:0];
+  NSString *documentLibraryFolderPath = [documentsDirectory stringByAppendingPathComponent:@"hotcity.json"];
+  
+  
+  NSData *jsonData = [[NSData alloc] initWithContentsOfFile:documentLibraryFolderPath];
+  NSError *error = nil;
+  NSMutableArray *hotCityList = jsonData ? [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers|NSJSONReadingMutableLeaves error:&error] : nil;
+  return [hotCityList valueForKey:@"info"];
+}
 
+
+- (NSMutableArray *)fetchCityList {
+  NSArray *paths = NSSearchPathForDirectoriesInDomains( NSDocumentDirectory,NSUserDomainMask, YES);
+  NSString *documentsDirectory = [paths objectAtIndex:0];
+  NSString *documentLibraryFolderPath = [documentsDirectory stringByAppendingPathComponent:@"city.json"];
+  
+  
+  NSData *jsonData = [[NSData alloc] initWithContentsOfFile:documentLibraryFolderPath];
+  NSError *error = nil;
+  NSMutableArray *hotCityList = jsonData ? [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers|NSJSONReadingMutableLeaves error:&error] : nil;
+  return [hotCityList valueForKey:@"info"];
+}
 @end

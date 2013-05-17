@@ -136,6 +136,7 @@ void AHReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkReachabili
 		SCNetworkReachabilityScheduleWithRunLoop(self.reachability, CFRunLoopGetCurrent(), kCFRunLoopDefaultMode);
 	} else {
 		[self stopUpdating];
+    
 	}
 }
 

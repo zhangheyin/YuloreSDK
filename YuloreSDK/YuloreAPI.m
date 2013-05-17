@@ -86,17 +86,17 @@
     [paraArray addObject:[NSString stringWithFormat:@"cat_id=%@", categoryID]];
     
   }
+  if (startResult != nil) {
+    [paraArray addObject:[NSString stringWithFormat:@"s=%@",startResult]];
+  }
   
+  if (numberOfResult != nil) {
+    [paraArray addObject:[NSString stringWithFormat:@"n=%@",numberOfResult]];
+  }
   if (distID != nil) {
     [paraArray addObject:[NSString stringWithFormat:@"dist_id=%@", distID]];
     
-    if (startResult != nil) {
-      [paraArray addObject:[NSString stringWithFormat:@"s=%@",startResult]];
-    }
-    
-    if (numberOfResult != nil) {
-      [paraArray addObject:[NSString stringWithFormat:@"n=%@",numberOfResult]];
-    }
+
 
     BOOL useCoordinate = NO;
     if (order != nil) {

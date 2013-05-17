@@ -8,9 +8,8 @@
 #import "POI.h"
 #import "DetailInfomationView.h"
 #import <MapKit/MapKit.h>
-@interface DetailInfomationView() <MKMapViewDelegate>
 
-
+@interface DetailInfomationView() <MKMapViewDelegate> 
 @end
 @implementation DetailInfomationView
 
@@ -65,7 +64,9 @@
     //    }
     
     
-    if (coordinate.latitude != -999 && coordinate.longitude != -999) {
+    if (coordinate.latitude != -999 && coordinate.longitude != -999 && (30.f * numberOfTelnumbers + 60.f < self.bounds.size.height)) {
+    
+      
       MKMapView *mapView = [[MKMapView alloc] initWithFrame:CGRectMake(0, 30.f * numberOfTelnumbers + 60.f, self.bounds.size.width, self.bounds.size.height - 30.f * numberOfTelnumbers - 60.f - 40.f)];
       mapView.mapType = MKMapTypeStandard;
       mapView.zoomEnabled=YES;

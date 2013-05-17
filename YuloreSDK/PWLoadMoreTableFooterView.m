@@ -145,5 +145,6 @@
 - (void)dealloc {
 	
 	_delegate=nil;
+  [super dealloc];
 }
 @end

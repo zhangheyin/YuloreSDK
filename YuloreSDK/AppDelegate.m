@@ -25,6 +25,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+  [self cityListToFile];
+  [self hotCityListToFile];
   NSLog(@"didFinishLaunchingWithOptions");
   AHReach *hostReach = [AHReach reachForHost:@"www.yulore.com"];
 	[hostReach startUpdatingWithBlock:^(AHReach *reach) {
@@ -123,8 +125,42 @@
 }
 
 
+- (void)hotCityListToFile {
+  dispatch_queue_t q = dispatch_queue_create("queue", 0);
+  dispatch_async(q, ^{
+    NSString *urlString = @"http://w10.test.yulore.com/api/city.php?hot=1";
+    urlString = [urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    
+    NSData *jsonData = [[NSString stringWithContentsOfURL:[NSURL URLWithString:urlString] encoding:NSUTF8StringEncoding error:nil] dataUsingEncoding:NSUTF8StringEncoding];
+    
+    if (jsonData != nil) {
+      NSArray *paths = NSSearchPathForDirectoriesInDomains( NSDocumentDirectory,NSUserDomainMask, YES);
+      NSString *documentsDirectory = [paths objectAtIndex:0];
+      NSString *documentLibraryFolderPath = [documentsDirectory stringByAppendingPathComponent:@"hotcity.json"];
+      
+      [jsonData writeToFile:documentLibraryFolderPath atomically:YES];
+    }
+  });
+  dispatch_release(q);
+}
+- (void)cityListToFile {
+  dispatch_queue_t q = dispatch_queue_create("queue", 0);
+  dispatch_async(q, ^{
+    NSString *urlString = @"http://w10.test.yulore.com/api/city.php";
+    urlString = [urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 
+    NSData *jsonData = [[NSString stringWithContentsOfURL:[NSURL URLWithString:urlString] encoding:NSUTF8StringEncoding error:nil] dataUsingEncoding:NSUTF8StringEncoding];
 
+    if (jsonData != nil) {
+      NSArray *paths = NSSearchPathForDirectoriesInDomains( NSDocumentDirectory,NSUserDomainMask, YES);
+      NSString *documentsDirectory = [paths objectAtIndex:0];
+      NSString *documentLibraryFolderPath = [documentsDirectory stringByAppendingPathComponent:@"city.json"];
+      
+      [jsonData writeToFile:documentLibraryFolderPath atomically:YES];
+    }
+  });
+  dispatch_release(q);
+}
 
 
 @end

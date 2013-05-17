@@ -48,6 +48,7 @@
 //#import "Play.h"
 #import "Quotation.h"
 #import "CategoryListViewController.h"
+#import "ListViewController.h"
 #define start_color [UIColor colorWithHex:0xEEEEEE]
 #define end_color [UIColor colorWithHex:0xDEDEDE]
 @interface MainViewController () <PassValueDelegate>
@@ -276,10 +277,15 @@
   //cell.quotation = [play.quotations objectAtIndex:indexPath.row];
   [self.condition setObject:q.identity forKey:CATEGORYID];
   [self.condition setObject:[self currentCityID] forKey:CITYID];
-  CategoryListViewController *clvc = [[CategoryListViewController alloc] initWithNibName:nil bundle:nil];
+ /* CategoryListViewController *clvc = [[CategoryListViewController alloc] initWithNibName:nil bundle:nil];
   //[clvc performSelector:@selector(setCategoryID:) withObject:q.identity];
   [clvc performSelector:@selector(setCondition:) withObject:self.condition];
-  [self.navigationController pushViewController:clvc  animated:YES];
+  [self.navigationController pushViewController:clvc  animated:YES];*/
+  ListViewController *viewController = [[ListViewController alloc] init];
+  [viewController performSelector:@selector(setCategoryID:) withObject:q.identity];
+  [viewController performSelector:@selector(setCondition:) withObject:self.condition];
+
+  [self.navigationController pushViewController:viewController animated:YES];
   
   //[tableView deselectRowAtIndexPath:indexPath animated:YES];
 }

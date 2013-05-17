@@ -5,6 +5,7 @@
 //  Created by Zhang Heyin on 13-4-7.
 //  Copyright (c) 2013年 Yulore. All rights reserved.
 //
+#define kMaxCellCount 22
 #define CITYID2 @"c_id"
 #define CITYID @"city_id"
 
@@ -25,10 +26,14 @@ static NSString *kSaveKeyMarkerLines = @"SaveKeyMarkerLines";
 #import "YuloreAPICategory.h"
 //#import "MBProgressHUD.h"
 #import "TDBadgedCell.h"
-
+#import "PWLoadMoreTableFooterView.h"
 #import "UINavigationBar+CustomBackground.h"
 
-@interface SearchViewController ()  <UITableViewDataSource, UITableViewDelegate, UISearchDisplayDelegate, UIAlertViewDelegate> {
+@interface SearchViewController ()  <UITableViewDataSource, UITableViewDelegate, UISearchDisplayDelegate, UIAlertViewDelegate, PWLoadMoreTableFooterDelegate> {
+  PWLoadMoreTableFooterView *_loadMoreFooterView;
+	BOOL _datasourceIsLoading;
+  bool _allLoaded;
+  int cellCount;
 }
 //@property (nonatomic, strong) MBProgressHUD *HUD;
 @property (nonatomic, retain) IBOutlet UITableView *tableView;
@@ -82,6 +87,20 @@ static NSString *kSaveKeyMarkerLines = @"SaveKeyMarkerLines";
   
   self.tableView.tableHeaderView = self.theSearchBar;
   //将searchBar添加到tableView的头,注意滚动出屏幕后，搜索框也不在了，只出现在首页
+  
+  //config the load more view
+  if (_loadMoreFooterView == nil) {
+		
+		PWLoadMoreTableFooterView *view = [[PWLoadMoreTableFooterView alloc] init];
+		view.delegate = self;
+		_loadMoreFooterView = view;
+		
+	}
+  self.tableView.tableFooterView = _loadMoreFooterView;
+  
+  
+  
+  
   
   
   
@@ -172,7 +191,14 @@ static NSString *kSaveKeyMarkerLines = @"SaveKeyMarkerLines";
   YuloreAPICategory *apiCategory = [[[YuloreAPICategory alloc] init] autorelease];
   NSArray *level1Category = [apiCategory level1Category];
   NSLog(@"%@", level1Category);
-
+  //*****IMPORTANT*****
+  //you need to do this when you first load your data
+  //need to check whether the data has all loaded
+  //Get the data first time
+  cellCount = 8;          //load your data, here is only demo purpose
+  [self check];
+  //tell the load more view: I have load the data.
+  [self doneLoadingTableViewData];
 	// Do any additional setup after loading the view.
 }
 
@@ -396,4 +422,52 @@ shouldReloadTableForSearchString:(NSString *)searchString {
   
   return documentLibraryFolderPath;
 }
+
+
+
+#pragma mark -
+#pragma mark Data Source Loading / Reloading Methods
+
+- (void)check {
+  //data source should call this when it can load more
+  //when all items loaded, set this to YES;
+  if (cellCount >= kMaxCellCount) {               // kMaxCellCount is only demo purpose
+    _allLoaded = YES;
+  } else
+    _allLoaded = NO;
+}
+
+- (void)doneLoadingTableViewData {
+	//  model should call this when its done loading
+	[_loadMoreFooterView pwLoadMoreTableDataSourceDidFinishedLoading];
+  [self.tableView reloadData];
+  // self.navigationItem.rightBarButtonItem.enabled = YES;
+}
+
+
+#pragma mark -
+#pragma mark PWLoadMoreTableFooterDelegate Methods
+
+- (void)pwLoadMore {
+  //just make sure when loading more, DO NOT try to refresh your data
+  //Especially when you do your work asynchronously
+  //Unless you are pretty sure what you are doing
+  //When you are refreshing your data, you will not be able to load more if you have pwLoadMoreTableDataSourceIsLoading and config it right
+  //disable the navigationItem is only demo purpose
+  // self.navigationItem.rightBarButtonItem.enabled = NO;
+  _datasourceIsLoading = YES;
+  cellCount +=-1;
+  [self check];
+	_datasourceIsLoading = NO;
+	[self performSelector:@selector(doneLoadingTableViewData) withObject:nil afterDelay:1.0];
+}
+
+
+- (BOOL)pwLoadMoreTableDataSourceIsLoading {
+  return _datasourceIsLoading;
+}
+- (BOOL)pwLoadMoreTableDataSourceAllLoaded {
+  return _allLoaded;
+}
+
 @end
