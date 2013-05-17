@@ -40,7 +40,6 @@
 		79A77E561745C26100A1F688 /* PWLoadMoreTableFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 79A77E551745C26100A1F688 /* PWLoadMoreTableFooterView.m */; };
 		79A77E591745D91100A1F688 /* ListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79A77E581745D91100A1F688 /* ListViewController.m */; };
 		79B0B3EE172B6CE600245F95 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B0B3ED172B6CE600245F95 /* MBProgressHUD.m */; };
-		79BE0CA8172A188900494E9A /* UINavigationBar-CustomBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 79BE0CA7172A188900494E9A /* UINavigationBar-CustomBackground.m */; };
 		79F4F51F1764262E0079F95A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79F4F51E1764262E0079F95A /* SystemConfiguration.framework */; };
 		79F4F5221764262E0079F95A /* CityScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 79F4F5211764262E0079F95A /* CityScrollView.m */; };
 		79F4F5261764262E0079F95A /* SectionInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 79F4F5251764262E0079F95A /* SectionInfo.m */; };
@@ -108,8 +107,6 @@
 		79A77E581745D91100A1F688 /* ListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListViewController.m; sourceTree = "<group>"; };
 		79B0B3EC172B6CE600245F95 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		79B0B3ED172B6CE600245F95 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
-		79BE0CA6172A188900494E9A /* UINavigationBar-CustomBackground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar-CustomBackground.h"; sourceTree = "<group>"; };
-		79BE0CA7172A188900494E9A /* UINavigationBar-CustomBackground.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar-CustomBackground.m"; sourceTree = "<group>"; };
 		79F4F51E1764262E0079F95A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		79F4F5201764262E0079F95A /* CityScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityScrollView.h; sourceTree = "<group>"; };
 		79F4F5211764262E0079F95A /* CityScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CityScrollView.m; sourceTree = "<group>"; };
@@ -122,9 +119,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7946B8E6172911750024200C /* QuartzCore.framework in Frameworks */,
 				79F4F51F1764262E0079F95A /* SystemConfiguration.framework in Frameworks */,
 				794AD82C17326FCE0061C941 /* CoreLocation.framework in Frameworks */,
-				7946B8E6172911750024200C /* QuartzCore.framework in Frameworks */,
 				7987A9F81728C835003C3E53 /* MapKit.framework in Frameworks */,
 				7987A9BA1728C3B5003C3E53 /* UIKit.framework in Frameworks */,
 				7987A9BC1728C3B5003C3E53 /* Foundation.framework in Frameworks */,
@@ -184,8 +181,6 @@
 				79A77E581745D91100A1F688 /* ListViewController.m */,
 				79B0B3EC172B6CE600245F95 /* MBProgressHUD.h */,
 				79B0B3ED172B6CE600245F95 /* MBProgressHUD.m */,
-				79BE0CA6172A188900494E9A /* UINavigationBar-CustomBackground.h */,
-				79BE0CA7172A188900494E9A /* UINavigationBar-CustomBackground.m */,
 				7946B8EA172914E40024200C /* CategoryListViewController.h */,
 				7946B8EB172914E40024200C /* CategoryListViewController.m */,
 				7946B8DE1729110C0024200C /* Quotation.h */,
@@ -330,7 +325,6 @@
 				7946B8DB172910C60024200C /* SectionHeaderView.m in Sources */,
 				7946B8E31729110C0024200C /* Quotation.m in Sources */,
 				7946B8EC172914E40024200C /* CategoryListViewController.m in Sources */,
-				79BE0CA8172A188900494E9A /* UINavigationBar-CustomBackground.m in Sources */,
 				79B0B3EE172B6CE600245F95 /* MBProgressHUD.m in Sources */,
 				79298E36172CBE7F008E6EC0 /* TDBadgedCell.m in Sources */,
 				79F4F5221764262E0079F95A /* CityScrollView.m in Sources */,

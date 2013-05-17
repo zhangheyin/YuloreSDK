@@ -49,6 +49,7 @@
 #import "Quotation.h"
 #import "CategoryListViewController.h"
 #import "ListViewController.h"
+#import <QuartzCore/QuartzCore.h>
 #define start_color [UIColor colorWithHex:0xEEEEEE]
 #define end_color [UIColor colorWithHex:0xDEDEDE]
 @interface MainViewController () <PassValueDelegate>
@@ -111,13 +112,21 @@
 	// Do any additional setup after loading the view.
 }
 - (void)switchCity{
+//  CATransition *animation = [CATransition animation];
+//  [animation setDuration:0.35f];
+//  [animation setType:kCATransitionMoveIn];
+//  [animation setSubtype:kCATransitionFromTop];
+//  [animation setFillMode:kCAFillModeForwards];
+//  [animation setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn]];
   
+//  [view.layer addAnimation:animation forKey:nil];
   CityViewController *cityViewController = [[CityViewController alloc] initWithNibName:nil bundle:nil currentCityID:[self currentCityID]];
 
   UINavigationController *aNavigationController = [[UINavigationController alloc] initWithRootViewController:cityViewController];
 
   [aNavigationController.navigationBar applyCustomTintColor];
   cityViewController.passValueDelegate = self;
+ // [aNavigationController.view.layer addAnimation:animation forKey:nil];
   [self.navigationController presentViewController:aNavigationController animated:YES completion:nil];
   [aNavigationController release];
   [cityViewController release];

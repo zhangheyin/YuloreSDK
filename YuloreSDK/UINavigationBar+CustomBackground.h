@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-#define kNavigationBarCustomTintColor   [UIColor colorWithRed:0.093 green:0.653 blue:0.828 alpha:1.0]
+#define kNavigationBarCustomTintColor   [UIColor colorWithRed:0x34/255.f green:0x49/255.f blue:0x5e/255.f alpha:1.0]
 
 @interface UINavigationBar(CustomBackground)
 
