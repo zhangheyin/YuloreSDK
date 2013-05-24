@@ -11,11 +11,14 @@
 #define CITYSENAME @"c_sen"
 #import "CityViewController.h"
 #import "YuloreAPI.h"
-#import "SearchViewController.h"
+
 #import "CityScrollView.h"
 #import "UINavigationBar+CustomBackground.h"
 #import "MBProgressHUD.h"
 #import <CoreLocation/CoreLocation.h>
+#import "UIBarButtonItem+FlatUI.h"
+#import "UIImage+FlatUI.h"
+#import "UIColor+FlatUI.h"
 @interface CityViewController ()  <UITableViewDataSource, UITableViewDelegate, UISearchDisplayDelegate, CityViewDelegate, MBProgressHUDDelegate, CLLocationManagerDelegate> {
   
   MBProgressHUD *HUD;
@@ -54,6 +57,14 @@
   self.tableView = aTableView;
   
   self.theSearchBar = [[[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, 40)] autorelease];
+  [[self.theSearchBar.subviews objectAtIndex:0] setHidden:YES];
+  [[self.theSearchBar.subviews objectAtIndex:0] removeFromSuperview];
+  for (UIView *subview in self.theSearchBar.subviews){
+    if ([subview isKindOfClass:NSClassFromString(@"UISearchBarBackground")]){
+      [subview removeFromSuperview];
+      break;
+    }
+  }
   self.theSearchBar.placeholder = @"北京/beijing/bj";
   self.theSearchBar.autocorrectionType = UITextAutocorrectionTypeNo;
   //self.theSearchBar.autocapitalizationType = UITextAutocapitalizationTypeAllCharacters;
@@ -81,7 +92,10 @@
   CGRect rect = frame;
   rect.size.height = rect.size.height - 40.f;
   rect.origin.y =  self.theSearchBar.frame.size.height;
-  self.cityScrollView  = [[[CityScrollView alloc] initWithFrame:rect withHotCityList:self.hotCityList withCurrentCityID:self.currentCityID] autorelease];
+  self.cityScrollView  = [[[CityScrollView alloc] initWithFrame:rect
+                                                withHotCityList:self.hotCityList
+                                              withCurrentCityID:self.currentCityID
+                                                     changeCity:NO] autorelease];
   
   self.cityScrollView.cvdelegate = self;
   
@@ -109,6 +123,19 @@
     [self.locationManager startUpdatingLocation];
     BOOL enable = [CLLocationManager locationServicesEnabled];
     NSLog(@"%@", enable? @"Enabled" : @"Not Enabled");
+    
+
+  //  UIImageView *buttonView = [[UIImageView alloc] initWithImage:[UIImage cancelButtonImageWithColor:[UIColor peterRiverColor] barMetrics:UIBarMetricsDefault cornerRadius:0] highlightedImage:[UIImage cancelButtonImageWithColor:[UIColor belizeHoleColor] barMetrics:UIBarMetricsDefault cornerRadius:0]];
+    UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 60, 30)];
+    [button setImage:[UIImage cancelButtonImageWithColor:[UIColor peterRiverColor] barMetrics:UIBarMetricsDefault cornerRadius:0] forState:UIControlStateNormal];
+      [button setImage:[UIImage cancelButtonImageWithColor:[UIColor belizeHoleColor] barMetrics:UIBarMetricsDefault cornerRadius:0] forState:UIControlStateHighlighted];
+    [button addTarget:self action:@selector(dismissNavgationController) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithCustomView:button];
+    [cancelButton setAction:@selector(dismissNavgationController)];
+    [cancelButton setTarget:self];
+    self.navigationItem.rightBarButtonItem = cancelButton;
+    [cancelButton release];
   }
   return self;
 }
@@ -357,7 +384,7 @@ shouldReloadTableForSearchString:(NSString *)searchString {
   BOOL type = NO;
   int alength = [inputString length];
   for (int i = 0; i<alength; i++) {
-  //  char commitChar = [inputString characterAtIndex:i];
+    //  char commitChar = [inputString characterAtIndex:i];
     NSString *temp = [inputString substringWithRange:NSMakeRange(i,1)];
     const char *u8Temp = [temp UTF8String];
     if (3 == strlen(u8Temp)){
@@ -403,7 +430,8 @@ shouldReloadTableForSearchString:(NSString *)searchString {
   rect.origin.y =  self.theSearchBar.frame.size.height;
   self.cityScrollView  = [[[CityScrollView alloc] initWithFrame:rect
                                                 withHotCityList:self.hotCityList
-                                              withCurrentCityID:self.currentCityID] autorelease];
+                                              withCurrentCityID:self.currentCityID
+                                                     changeCity:YES] autorelease];
   
   self.cityScrollView.cvdelegate = self;
   [self.view addSubview:self.cityScrollView];
@@ -433,7 +461,7 @@ shouldReloadTableForSearchString:(NSString *)searchString {
 	HUD.labelText = [NSString stringWithFormat:@"选择城市:%@", sender];
 	
 	[HUD show:YES];
-	[HUD hide:YES afterDelay:1];
+	[HUD hide:YES afterDelay:1.3];
 }
 - (NSString *)currentCityName {
   NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -456,6 +484,12 @@ shouldReloadTableForSearchString:(NSString *)searchString {
 	[HUD removeFromSuperview];
 	[HUD release];
 	HUD = nil;
+  [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+}
+
+
+
+- (void)dismissNavgationController {
   [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 

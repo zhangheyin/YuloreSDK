@@ -121,17 +121,17 @@ static NSMutableDictionary *_iconCacheDictionary = nil;
     self.noRatingsLabel.hidden = YES;
     [self addSubview:self.noRatingsLabel];
     
-    self.ratingsLabel = [[UILabel alloc] init];
-    self.ratingsLabel.frame = (CGRect) {
-      .origin.x = 135.0f,
-      .origin.y = 52.0f,
-      .size.width = 60.0f,
-      .size.height = 12.0f
-    };
-    self.ratingsLabel.font = [UIFont systemFontOfSize:10.0f];
-    self.ratingsLabel.textColor = [UIColor colorWithWhite:90.0f/255.0f alpha:1.0f];
-    self.ratingsLabel.backgroundColor = [UIColor clearColor];
-    [self addSubview:self.ratingsLabel];
+   // self.ratingsLabel = [[UILabel alloc] init];
+   // self.ratingsLabel.frame = (CGRect) {
+    //  .origin.x = 135.0f,
+    //  .origin.y = 52.0f,
+    //  .size.width = 60.0f,
+   //   .size.height = 12.0f
+  //  };
+  //  self.ratingsLabel.font = [UIFont systemFontOfSize:10.0f];
+   // self.ratingsLabel.textColor = [UIColor colorWithWhite:90.0f/255.0f alpha:1.0f];
+  //  self.ratingsLabel.backgroundColor = [UIColor clearColor];
+  //  [self addSubview:self.ratingsLabel];
     
     //        self.purchaseButton = [UIButton buttonWithType:UIButtonTypeCustom];
     //        self.purchaseButton.frame = (CGRect) {

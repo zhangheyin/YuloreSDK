@@ -19,15 +19,28 @@
 - (id) init {
   self = [super init];
   if (self) {
-    NSString *urlString = @"http://w10.test.yulore.com/api/category.php";
-    //query = [NSString stringWithFormat:@"%@&format=json&nojsoncallback=1&api_key", query];
-    urlString = [urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    // NSLog(@"[%@ %@] sent %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), query);
-    NSData *jsonData = [[NSString stringWithContentsOfURL:[NSURL URLWithString:urlString] encoding:NSUTF8StringEncoding error:nil] dataUsingEncoding:NSUTF8StringEncoding];
+    //    NSString *urlString = @"http://w10.test.yulore.com/api/category.php";
+    //    //query = [NSString stringWithFormat:@"%@&format=json&nojsoncallback=1&api_key", query];
+    //    urlString = [urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    //    // NSLog(@"[%@ %@] sent %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), query);
+    //    NSData *jsonData = [[NSString stringWithContentsOfURL:[NSURL URLWithString:urlString] encoding:NSUTF8StringEncoding error:nil] dataUsingEncoding:NSUTF8StringEncoding];
+    //    NSError *error = nil;
+    //    self.results = jsonData ? [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers|NSJSONReadingMutableLeaves error:&error] : nil;
+    //    if (error)
+    //      NSLog(@"[%@ %@] JSON error: %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), error.localizedDescription);
+    
+    
+    NSArray *paths = NSSearchPathForDirectoriesInDomains( NSDocumentDirectory,NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString *documentLibraryFolderPath = [documentsDirectory stringByAppendingPathComponent:@"category.json"];
+    
+    
+    NSData *jsonData = [[NSData alloc] initWithContentsOfFile:documentLibraryFolderPath];
     NSError *error = nil;
     self.results = jsonData ? [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers|NSJSONReadingMutableLeaves error:&error] : nil;
-    if (error)
-      NSLog(@"[%@ %@] JSON error: %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), error.localizedDescription);
+    
+    
+    
     
     NSMutableArray *filterAllCategory = [[[NSMutableArray alloc] init] autorelease];
     for (NSDictionary *aCategory in self.results) {
@@ -93,7 +106,7 @@
   //pid==aLevel1Category->id level==2
   //allLevel1Category : all category which level is 2
   NSMutableArray *allLevel1Category = [self.levelDictionary objectForKey:@"2"];
-  //current level 1 
+  //current level 1
   NSString *categoryID = [aLevel1Category objectForKey:@"id"];
   NSMutableArray *currentLevel2Category = [[[NSMutableArray alloc] init] autorelease];
   for (NSDictionary *aLevel2Category in allLevel1Category) {
@@ -118,7 +131,7 @@
     }
     return (NSComparisonResult)NSOrderedSame;
   }];
-
+  
   return resultLevel2Category;
 }
 
@@ -128,21 +141,21 @@
   NSMutableArray *level1Category = [self.levelDictionary objectForKey:@"1"];
   
   NSArray *newResult = [level1Category sortedArrayUsingComparator:^(id obj1,id obj2) {
-     NSDictionary *dic1 = (NSDictionary *)obj1;
-     NSDictionary *dic2 = (NSDictionary *)obj2;
-     NSNumber *num1 = (NSNumber *)[dic1 objectForKey:@"ranking"];
-     NSNumber *num2 = (NSNumber *)[dic2 objectForKey:@"ranking"];
-     if ([num1 integerValue] > [num2 integerValue])
-     {
-       return (NSComparisonResult)NSOrderedAscending;
-     }
-     else
-     {
-       return (NSComparisonResult)NSOrderedDescending;
-     }
-     return (NSComparisonResult)NSOrderedSame;
-   }];
-
+    NSDictionary *dic1 = (NSDictionary *)obj1;
+    NSDictionary *dic2 = (NSDictionary *)obj2;
+    NSNumber *num1 = (NSNumber *)[dic1 objectForKey:@"ranking"];
+    NSNumber *num2 = (NSNumber *)[dic2 objectForKey:@"ranking"];
+    if ([num1 integerValue] > [num2 integerValue])
+    {
+      return (NSComparisonResult)NSOrderedAscending;
+    }
+    else
+    {
+      return (NSComparisonResult)NSOrderedDescending;
+    }
+    return (NSComparisonResult)NSOrderedSame;
+  }];
+  
   
   return newResult;
 }

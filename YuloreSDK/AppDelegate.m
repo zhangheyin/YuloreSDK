@@ -9,8 +9,11 @@
 #import "AppDelegate.h"
 #import "UINavigationBar+CustomBackground.h"
 #import "AHReach.h"
+#import "UINavigationBar+FlatUI.h"
+#import "UIColor+FlatUI.h"
+
 @interface AppDelegate()<UIAlertViewDelegate> {
- 
+  
 }
 @end
 
@@ -25,8 +28,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-  [self cityListToFile];
-  [self hotCityListToFile];
+  
   NSLog(@"didFinishLaunchingWithOptions");
   AHReach *hostReach = [AHReach reachForHost:@"www.yulore.com"];
 	[hostReach startUpdatingWithBlock:^(AHReach *reach) {
@@ -41,26 +43,11 @@
                                                 otherButtonTitles:@"OK", nil];
       [alertView show];
     } else {
-      [self createSearchHistory];
-      self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
-      // Override point for customization after application launch.
-      self.mainViewController = [[[MainViewController alloc] initWithNibName:nil bundle:nil] autorelease];
-      UINavigationController *aNavigationController = [[UINavigationController alloc] initWithRootViewController:self.mainViewController];
-      
-      [aNavigationController.navigationBar applyCustomTintColor];
-      self.window.rootViewController = aNavigationController;
-      [aNavigationController release];
-      
-      
-      
-      
-      self.window.backgroundColor = [UIColor whiteColor];
-      [self.window makeKeyAndVisible];
+      [self cityListToFile];
+      [self preDownloadJson];
     }
-    
-    
 	}];
-
+  
   return YES;
 }
 
@@ -72,11 +59,11 @@
   if ([[NSFileManager defaultManager] fileExistsAtPath:documentLibraryFolderPath]) {
     NSLog(@"文件已经存在了");
   }else {
-
+    
     [[NSFileManager defaultManager] createFileAtPath:documentLibraryFolderPath
                                             contents:nil
                                           attributes:nil];
-     }
+  }
 }
 
 - (BOOL)updateAvailabilityWithReach:(AHReach *)reach {
@@ -85,7 +72,6 @@
 	
 	if([reach isReachableViaWWAN])
 		NSLog(@"Available via WWAN"); //field.text = @"Available via WWAN";
-	
 	if([reach isReachableViaWiFi])
 		NSLog(@"Available via WiFi");
   if (![reach isReachable]) {
@@ -126,41 +112,96 @@
 
 
 - (void)hotCityListToFile {
-  dispatch_queue_t q = dispatch_queue_create("queue", 0);
-  dispatch_async(q, ^{
-    NSString *urlString = @"http://w10.test.yulore.com/api/city.php?hot=1";
-    urlString = [urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+  
+  NSString *urlString = @"http://w10.test.yulore.com/api/city.php?hot=1";
+  urlString = [urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+  
+  NSData *jsonData = [[NSString stringWithContentsOfURL:[NSURL URLWithString:urlString] encoding:NSUTF8StringEncoding error:nil] dataUsingEncoding:NSUTF8StringEncoding];
+  
+  if (jsonData != nil) {
+    NSArray *paths = NSSearchPathForDirectoriesInDomains( NSDocumentDirectory,NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString *documentLibraryFolderPath = [documentsDirectory stringByAppendingPathComponent:@"hotcity.json"];
     
-    NSData *jsonData = [[NSString stringWithContentsOfURL:[NSURL URLWithString:urlString] encoding:NSUTF8StringEncoding error:nil] dataUsingEncoding:NSUTF8StringEncoding];
-    
-    if (jsonData != nil) {
-      NSArray *paths = NSSearchPathForDirectoriesInDomains( NSDocumentDirectory,NSUserDomainMask, YES);
-      NSString *documentsDirectory = [paths objectAtIndex:0];
-      NSString *documentLibraryFolderPath = [documentsDirectory stringByAppendingPathComponent:@"hotcity.json"];
-      
-      [jsonData writeToFile:documentLibraryFolderPath atomically:YES];
-    }
-  });
-  dispatch_release(q);
+    [jsonData writeToFile:documentLibraryFolderPath atomically:YES];
+  }
+  
+  
 }
 - (void)cityListToFile {
-  dispatch_queue_t q = dispatch_queue_create("queue", 0);
-  dispatch_async(q, ^{
-    NSString *urlString = @"http://w10.test.yulore.com/api/city.php";
-    urlString = [urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-
-    NSData *jsonData = [[NSString stringWithContentsOfURL:[NSURL URLWithString:urlString] encoding:NSUTF8StringEncoding error:nil] dataUsingEncoding:NSUTF8StringEncoding];
-
-    if (jsonData != nil) {
-      NSArray *paths = NSSearchPathForDirectoriesInDomains( NSDocumentDirectory,NSUserDomainMask, YES);
-      NSString *documentsDirectory = [paths objectAtIndex:0];
-      NSString *documentLibraryFolderPath = [documentsDirectory stringByAppendingPathComponent:@"city.json"];
-      
-      [jsonData writeToFile:documentLibraryFolderPath atomically:YES];
-    }
-  });
-  dispatch_release(q);
+  
+  NSString *urlString = @"http://w10.test.yulore.com/api/city.php";
+  urlString = [urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+  
+  NSData *jsonData = [[NSString stringWithContentsOfURL:[NSURL URLWithString:urlString] encoding:NSUTF8StringEncoding error:nil] dataUsingEncoding:NSUTF8StringEncoding];
+  
+  if (jsonData != nil) {
+    NSArray *paths = NSSearchPathForDirectoriesInDomains( NSDocumentDirectory,NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString *documentLibraryFolderPath = [documentsDirectory stringByAppendingPathComponent:@"city.json"];
+    
+    [jsonData writeToFile:documentLibraryFolderPath atomically:YES];
+  }
+  
 }
 
+- (void)categoryToFile {
+  
+  NSString *urlString = @"http://w10.test.yulore.com/api/category.php";
+  urlString = [urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+  
+  NSData *jsonData = [[NSString stringWithContentsOfURL:[NSURL URLWithString:urlString] encoding:NSUTF8StringEncoding error:nil] dataUsingEncoding:NSUTF8StringEncoding];
+  
+  if (jsonData != nil) {
+    NSArray *paths = NSSearchPathForDirectoriesInDomains( NSDocumentDirectory,NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString *documentLibraryFolderPath = [documentsDirectory stringByAppendingPathComponent:@"category.json"];
+    
+    [jsonData writeToFile:documentLibraryFolderPath atomically:YES];
+  }
+  
+}
+
+
+
+
+- (void) preDownloadJson {
+  dispatch_group_t taskGroup = dispatch_group_create();
+  dispatch_queue_t mainQueue = dispatch_get_main_queue();
+  dispatch_group_async(taskGroup, mainQueue, ^{
+    [self categoryToFile];
+    NSLog(@"categoryToFile");
+  });
+  dispatch_group_async(taskGroup, mainQueue, ^{
+    [self hotCityListToFile];
+    NSLog(@"hotCityListToFile");
+  });
+  dispatch_group_async(taskGroup, mainQueue, ^{
+    [self cityListToFile];
+    NSLog(@"cityListToFile");
+  });
+  
+  dispatch_group_notify(taskGroup, mainQueue, ^{
+    
+    
+    self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
+    // Override point for customization after application launch.
+    self.mainViewController = [[[MainViewController alloc] initWithNibName:nil bundle:nil] autorelease];
+    UINavigationController *aNavigationController = [[UINavigationController alloc] initWithRootViewController:self.mainViewController];
+    
+    //[aNavigationController.navigationBar configureFlatNavigationBarWithColor:kNavigationBarCustomTintColor];
+    [aNavigationController.navigationBar configureFlatNavigationBarWithColor:[UIColor midnightBlueColor]];
+    //[aNavigationController.navigationBar applyCustomTintColor];
+    self.window.rootViewController = aNavigationController;
+    [aNavigationController release];
+    
+    
+    self.window.backgroundColor = [UIColor midnightBlueColor];
+    [self.window makeKeyAndVisible];
+    
+  });
+  dispatch_release(taskGroup);
+  
+}
 
 @end

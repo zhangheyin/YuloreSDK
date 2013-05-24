@@ -19,9 +19,9 @@
 
 @end
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
-
-
-
+#import "UIBarButtonItem+FlatUI.h"
+#import "UINavigationBar+FlatUI.h"
+#import "UIColor+FlatUI.h"
 #define DEFAULT_ROW_HEIGHT 35
 #define HEADER_HEIGHT 35
 #define CITYID @"city_id"
@@ -36,7 +36,6 @@
 #define LONGITUDE @"lng"
 #define KEYWORD @"q"
 #import "MainViewController.h"
-#import "SearchViewController.h"
 #import "CityViewController.h"
 #import "UINavigationBar+CustomBackground.h"
 #import "YuloreAPICategory.h"
@@ -47,9 +46,10 @@
 #import "YuloreAPI.h"
 //#import "Play.h"
 #import "Quotation.h"
-#import "CategoryListViewController.h"
+//#import "CategoryListViewController.h"
 #import "ListViewController.h"
 #import <QuartzCore/QuartzCore.h>
+#import "NewSearchViewController.h"
 #define start_color [UIColor colorWithHex:0xEEEEEE]
 #define end_color [UIColor colorWithHex:0xDEDEDE]
 @interface MainViewController () <PassValueDelegate>
@@ -76,22 +76,29 @@
   self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
   if (self) {
     // Custom initialization
-    [self.view setBackgroundColor:[UIColor grayColor]];
+    [self.view setBackgroundColor:[UIColor peterRiverColor]];
   }
   return self;
 }
+- (void)viewDidAppear:(BOOL)animated {
+  [super viewDidAppear:animated];
 
+}
 - (void)viewDidLoad
 {
   [super viewDidLoad];
   
   self.condition = [[NSMutableDictionary alloc] init];
+  [UIBarButtonItem configureFlatButtonsWithColor:[UIColor peterRiverColor] highlightedColor:[UIColor belizeHoleColor] cornerRadius:3];
   
   UIBarButtonItem *searchButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(search)];
   self.navigationItem.rightBarButtonItem = searchButton;
   [searchButton release];
   
   UIBarButtonItem *switchCity = [[UIBarButtonItem alloc] initWithTitle:[self currentCityName] style:UIBarButtonItemStylePlain target:self action:@selector(switchCity)];
+  [switchCity setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys: [UIFont fontWithName:@"Helvetica-Bold" size:15.0], UITextAttributeFont,nil] forState:UIControlStateNormal];
+
+  
   self.navigationItem.leftBarButtonItem = switchCity;
   [switchCity release];
 
@@ -110,6 +117,26 @@
   rowHeight_ = DEFAULT_ROW_HEIGHT;
   openSectionIndex_ = NSNotFound;
 	// Do any additional setup after loading the view.
+  
+
+  
+  
+  
+  
+}
+
+
+
+- (void)selectCityFirstTime {
+  NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+  NSDictionary *aCity = [defaults objectForKey:@"City"];
+
+  
+  if (![aCity objectForKey:CITYNAME]) {
+    //告知城市为空
+    [self switchCity];
+    
+  }
 }
 - (void)switchCity{
 //  CATransition *animation = [CATransition animation];
@@ -123,8 +150,8 @@
   CityViewController *cityViewController = [[CityViewController alloc] initWithNibName:nil bundle:nil currentCityID:[self currentCityID]];
 
   UINavigationController *aNavigationController = [[UINavigationController alloc] initWithRootViewController:cityViewController];
-
-  [aNavigationController.navigationBar applyCustomTintColor];
+  [aNavigationController.navigationBar configureFlatNavigationBarWithColor:[UIColor midnightBlueColor]];
+  //[aNavigationController.navigationBar applyCustomTintColor];
   cityViewController.passValueDelegate = self;
  // [aNavigationController.view.layer addAnimation:animation forKey:nil];
   [self.navigationController presentViewController:aNavigationController animated:YES completion:nil];
@@ -133,14 +160,15 @@
 }
 - (void)search {
   
-  SearchViewController *searchViewController = [[SearchViewController alloc] initWithNibName:nil bundle:nil];
+  //SearchViewController *searchViewController = [[SearchViewController alloc] initWithNibName:nil bundle:nil];
+  NewSearchViewController *newSearchViewController = [[NewSearchViewController alloc] initWithNibName:nil bundle:nil];
+  UINavigationController *aNavigationController = [[UINavigationController alloc] initWithRootViewController:newSearchViewController];
   
-  UINavigationController *aNavigationController = [[UINavigationController alloc] initWithRootViewController:searchViewController];
   
-  
-  [aNavigationController.navigationBar applyCustomTintColor];
-  
-  searchViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+  //[aNavigationController.navigationBar applyCustomTintColor];
+    [aNavigationController.navigationBar configureFlatNavigationBarWithColor:[UIColor midnightBlueColor]];
+  //searchViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+  newSearchViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
 
 
 
@@ -148,7 +176,8 @@
   
   
   [self.navigationController presentViewController:aNavigationController animated:YES completion:nil];
-  [searchViewController release];
+  [newSearchViewController release];
+ // [searchViewController release];
   [aNavigationController release];
 }
 - (void)didReceiveMemoryWarning
@@ -165,6 +194,7 @@
   [self.navigationItem.leftBarButtonItem setTitle:self.cityTitle];
   //[self.searchCondition setObject:[NSString stringWithFormat:@"%d",cityID] forKey:CITYID];
 }
+
 - (NSString *)currentCityName {
   NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
   NSDictionary *aCity = [defaults objectForKey:@"City"];
@@ -183,6 +213,7 @@
   NSString *cityID = [aCity objectForKey:CITYID2];
   return cityID;
 }
+
 - (void)setUpPlaysArray2 {
   YuloreAPICategory *apiCategory = [[[YuloreAPICategory alloc] init] autorelease];
   NSArray *level1Category = [apiCategory level1Category];
@@ -305,7 +336,7 @@
   ListViewController *viewController = [[ListViewController alloc] init];
   [viewController performSelector:@selector(setCategoryID:) withObject:q.identity];
   [viewController performSelector:@selector(setCondition:) withObject:self.condition];
-
+  viewController.title = q.character;
   [self.navigationController pushViewController:viewController animated:YES];
   
   //[tableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -508,9 +539,11 @@
   self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
   if (self) {
     self.characterLabel = [[UILabel alloc] initWithFrame:CGRectMake(53.f, 2.f, 247.f, 25.f)];
+    [self.characterLabel setTextColor:[UIColor whiteColor]];
+    self.characterLabel.font = [UIFont boldSystemFontOfSize:17];
     [self.characterLabel setBackgroundColor:[UIColor clearColor]];
     [self.contentView addSubview:self.characterLabel];
-    [self.contentView setBackgroundColor:[UIColor grayColor]];
+    [self.contentView setBackgroundColor:[UIColor peterRiverColor]];
   }
   
   return self;

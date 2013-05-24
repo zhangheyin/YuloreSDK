@@ -12,6 +12,6 @@
 
 @end
 @interface CityScrollView : UIScrollView
-- (id)initWithFrame:(CGRect)frame withHotCityList:(NSMutableArray *)hotCityList withCurrentCityID:(NSString *)currentCityID;
+- (id)initWithFrame:(CGRect)frame withHotCityList:(NSMutableArray *)hotCityList withCurrentCityID:(NSString *)currentCityID changeCity:(BOOL)changeCity;
 @property (nonatomic, assign) id<CityViewDelegate> cvdelegate;
 @end

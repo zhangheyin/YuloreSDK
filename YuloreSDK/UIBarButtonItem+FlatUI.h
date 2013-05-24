@@ -13,5 +13,7 @@
 + (void) configureFlatButtonsWithColor:(UIColor *) color
                       highlightedColor:(UIColor *)highlightedColor
                           cornerRadius:(CGFloat) cornerRadius;
-
++ (void) configureCancelFlatButtonsWithColor:(UIColor *) color
+                      highlightedColor:(UIColor *)highlightedColor
+                          cornerRadius:(CGFloat) cornerRadius;
 @end

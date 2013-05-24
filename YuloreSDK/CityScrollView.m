@@ -9,7 +9,10 @@
 #define CITYNAME @"c_name"
 #import "CityScrollView.h"
 #import "YuloreAPI.h"
+#import <QuartzCore/QuartzCore.h>
+#import "UIImage+FlatUI.h"
 #import "UINavigationBar+CustomBackground.h"
+#import "UIColor+FlatUI.h"
 @interface CityScrollView ()
 @property (nonatomic, retain) NSMutableArray *hotcitylist;
 @property (nonatomic, retain) NSString *currentCityID;
@@ -18,14 +21,19 @@
 @synthesize hotcitylist = _hotcitylist;
 @synthesize currentCityID = _currentCityID;
 
-- (id)initWithFrame:(CGRect)frame withHotCityList:(NSMutableArray *)hotCityList withCurrentCityID:(NSString *)currentCityID
+- (id)initWithFrame:(CGRect)frame withHotCityList:(NSMutableArray *)hotCityList withCurrentCityID:(NSString *)currentCityID changeCity:(BOOL)changeCity
 {
   self = [super initWithFrame:frame];
   if (self) {
     self.backgroundColor = kNavigationBarCustomTintColor;
     // NSMutableArray *cityArray = [YuloreAPI cityList];
-    
-    
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, 40.f)];
+    [titleLabel setText:@"热门城市"];
+    [titleLabel setTextAlignment:UITextAlignmentCenter];
+    titleLabel.font = [UIFont boldSystemFontOfSize:18];
+    [titleLabel setBackgroundColor:[UIColor clearColor]];
+    [titleLabel setTextColor:[UIColor whiteColor]];
+    [self addSubview:titleLabel];
     self.hotcitylist = hotCityList;
     self.currentCityID = currentCityID;
     
@@ -45,7 +53,7 @@
     
     self.contentSize = CGSizeMake(self.frame.size.width, lines * 40.f);
     //
-    CGFloat yOffset = 0;
+    CGFloat yOffset = 40;
     CGFloat xOffset = 0;
     
     
@@ -55,13 +63,37 @@
       //[[UIButton alloc] initWithFrame:CGRectMake(xOffset, yOffset, buttonWidth, 40)];
       [aCityButton setFrame:CGRectMake(xOffset, yOffset, buttonWidth, 40)];
       
-      
       if ([self.currentCityID isEqualToString:[aCityDic objectForKey:CITYID2]]) {
-        [aCityButton setImage:[UIImage imageNamed:@"selectcity.png"]
-                     forState:UIControlStateNormal];
+        //CGFloat minEdgeSize = 5 * 2 + 1;
+        CGRect rect = CGRectMake(0, 0, 60, 40);
+        UIBezierPath *roundedRect = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(10, 4, 40, 32) cornerRadius:0];
+        roundedRect.lineWidth = 0;
+        UIGraphicsBeginImageContextWithOptions(rect.size, NO, 0.0f);
+        [[UIColor peterRiverColor] setFill];
+        [roundedRect fill];
+        [roundedRect stroke];
+        [roundedRect addClip];
+        UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        [aCityButton setBackgroundImage:image forState:UIControlStateNormal];
+        
+        if (changeCity) {
+          
+          CABasicAnimation *theAnimation;
+          theAnimation=[CABasicAnimation animationWithKeyPath:@"transform.rotation.y"];
+          theAnimation.delegate = self;
+          theAnimation.duration = 1;
+          theAnimation.repeatCount = 0;
+          theAnimation.removedOnCompletion = FALSE;
+          theAnimation.fillMode = kCAFillModeForwards;
+          theAnimation.autoreverses = NO;
+          theAnimation.fromValue = [NSNumber numberWithFloat:-M_PI];
+          //CGFloat radian = 350 * (M_2_PI / 360);
+          theAnimation.toValue =[NSNumber numberWithFloat:2*M_PI];
+          [aCityButton.layer addAnimation:theAnimation forKey:@"animateLayer"];
+        }
       }
-
-
+      
       
       UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 80.f, 40.f)];
       label.text = [aCityDic objectForKey:CITYNAME]; //[[aCityDic allKeys] objectAtIndex:0];
@@ -69,7 +101,6 @@
       label.font = [UIFont boldSystemFontOfSize:18];
       [label setTextAlignment:UITextAlignmentCenter];
       label.minimumFontSize = 1.0f;
-      
       
       
       // CGRect bounds = label.bounds;
@@ -82,7 +113,7 @@
       [aCityButton addTarget:self action:@selector(selectCity:)
             forControlEvents:UIControlEventTouchUpInside];
       //[aCityButton setBackgroundColor:[UIColor clearColor]];
-
+      
       [aCityButton setTag:i];
       [aCityButton addSubview:label];
       //[aCity setTitle:[[aCityDic allKeys] objectAtIndex:0]

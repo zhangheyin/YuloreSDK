@@ -8,6 +8,7 @@
 
 #import "YuloreAPI.h"
 #import "JSONKit.h"
+#import "AHReach.h"
 @implementation YuloreAPI
 
 //+ (NSMutableArray *)cityList {
@@ -133,10 +134,48 @@
 
 
 
++ (BOOL)updateAvailabilityWithReach:(AHReach *)reach {
+	
+  //field.text = @"Not reachable";
+	
+	if([reach isReachableViaWWAN])
+		NSLog(@"Available via WWAN"); //field.text = @"Available via WWAN";
+	if([reach isReachableViaWiFi])
+		NSLog(@"Available via WiFi");
+  if (![reach isReachable]) {
+    NSLog(@"Available via isUNReachable");
+    return NO;
+  }
+  return YES;
+}
 
 + (NSMutableArray *)executeSearch3:(NSMutableDictionary *)searchCondition
 {
   NSLog(@"start");
+  
+  AHReach *hostReach = [AHReach reachForHost:@"www.yulore.com"];
+	[hostReach startUpdatingWithBlock:^(AHReach *reach) {
+    NSLog(@"%@", reach);
+		BOOL status = [self updateAvailabilityWithReach:reach];
+    
+    if (status == NO) {
+      UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil
+                                                          message:@"网络链接失败"
+                                                         delegate:nil
+                                                cancelButtonTitle:nil
+                                                otherButtonTitles:@"OK", nil];
+      [alertView show];
+    } else {
+
+      
+    }
+    
+	}];
+  
+  
+  
+  
+  
   NSString *urlString = [self shopSearchWithSearchCondition:searchCondition];
   //query = [NSString stringWithFormat:@"%@&format=json&nojsoncallback=1&api_key", query];
   urlString = [urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
@@ -424,8 +463,8 @@
   
   urlString = [urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
   // NSLog(@"[%@ %@] sent %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), query);
-  NSData *jsonData = [[NSString stringWithContentsOfURL:[NSURL URLWithString:urlString] encoding:NSUTF8StringEncoding
-                                                  error:nil] dataUsingEncoding:NSUTF8StringEncoding];
+//  NSData *jsonData = [[NSString stringWithContentsOfURL:[NSURL URLWithString:urlString] encoding:NSUTF8StringEncoding
+ //                                                 error:nil] dataUsingEncoding:NSUTF8StringEncoding];
   NSError *error = nil;
 //  NSDictionary *results = jsonData ? [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers|NSJSONReadingMutableLeaves error:&error] : nil;
   if (error) NSLog(@"[%@ %@] JSON error: %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), error.localizedDescription);

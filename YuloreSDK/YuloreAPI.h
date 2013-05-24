@@ -9,10 +9,10 @@
 #import <Foundation/Foundation.h>
 
 @interface YuloreAPI : NSObject
-+ (NSString *)shopSearchWithKeyWord:(NSString *)keyWord;
-+ (NSMutableArray *)executeSearch:(NSString *)keyWord;
-+ (NSMutableArray *)executeSearch2:(NSString *)keyWord;
-+ (void) yuloreCategory;
+//+ (NSString *)shopSearchWithKeyWord:(NSString *)keyWord;
+//+ (NSMutableArray *)executeSearch:(NSString *)keyWord;
+//+ (NSMutableArray *)executeSearch2:(NSString *)keyWord;
+//+ (void) yuloreCategory;
 //+ (NSMutableArray *)cityList;
 + (NSMutableArray *)executeSearch3:(NSMutableDictionary *)searchCondition;
 

@@ -6,12 +6,11 @@
  Version: 2.0
  
  
- 
  */
 
 #import "SectionHeaderView.h"
 #import <QuartzCore/QuartzCore.h>
-
+#import "UIColor+FlatUI.h"
 @implementation SectionHeaderView
 
 
@@ -19,7 +18,6 @@
 
 
 + (Class)layerClass {
-  
   return [CAGradientLayer class];
 }
 
@@ -46,9 +44,8 @@
     CGRectInset(titleLabelFrame, 0.0, 5.0);
     UILabel *label = [[UILabel alloc] initWithFrame:titleLabelFrame];
     
-    
     label.text = title;
-    label.font = [UIFont boldSystemFontOfSize:17.0];
+    label.font = [UIFont boldSystemFontOfSize:18.0];
     label.textColor = [UIColor whiteColor];
     label.backgroundColor = [UIColor clearColor];
     [self addSubview:label];
@@ -58,7 +55,7 @@
     // Create and configure the disclosure button.
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     button.frame = CGRectMake(0.0, 5.0, 25.0, 25.0);
-
+    
     [button setImage:[UIImage imageNamed:@"carat.png"] forState:UIControlStateNormal];
     [button setImage:[UIImage imageNamed:@"carat-open.png"] forState:UIControlStateSelected];
     [button addTarget:self action:@selector(toggleOpen:) forControlEvents:UIControlEventTouchUpInside];
@@ -66,21 +63,23 @@
     _disclosureButton = button;
     
     
-// Set the colors for the gradient layer.
-//    static NSMutableArray *colors = nil;
-//    if (colors == nil) {
-//      colors = [[NSMutableArray alloc] initWithCapacity:3];
-//      UIColor *color = nil;
-//      color = [UIColor colorWithRed:0.82 green:0.84 blue:0.87 alpha:1.0];
-//      [colors addObject:(id)[color CGColor]];
-//      color = [UIColor colorWithRed:0.41 green:0.41 blue:0.59 alpha:1.0];
-//      [colors addObject:(id)[color CGColor]];
-//      color = [UIColor colorWithRed:0.41 green:0.41 blue:0.59 alpha:1.0];
-//      [colors addObject:(id)[color CGColor]];
-//    }
-// [(CAGradientLayer *)self.layer setColors:colors];
-    [self setBackgroundColor:[UIColor blackColor]];
-//[(CAGradientLayer *)self.layer setLocations:[NSArray arrayWithObjects:[NSNumber numberWithFloat:0.0], [NSNumber numberWithFloat:0.48], [NSNumber numberWithFloat:1.0], nil]];
+    // Set the colors for the gradient layer.
+    //    static NSMutableArray *colors = nil;
+    //    if (colors == nil) {
+    //      colors = [[NSMutableArray alloc] initWithCapacity:3];
+    //      UIColor *color = nil;
+    //      color = [UIColor colorWithRed:0.82 green:0.84 blue:0.87 alpha:1.0];
+    //      [colors addObject:(id)[color CGColor]];
+    //      color = [UIColor colorWithRed:0.41 green:0.41 blue:0.59 alpha:1.0];
+    //      [colors addObject:(id)[color CGColor]];
+    //      color = [UIColor colorWithRed:0.41 green:0.41 blue:0.59 alpha:1.0];
+    //      [colors addObject:(id)[color CGColor]];
+    //    }
+    // [(CAGradientLayer *)self.layer setColors:colors];
+    [self setBackgroundColor:[UIColor blendedColorWithForegroundColor:[UIColor midnightBlueColor] backgroundColor:[UIColor whiteColor] percentBlend:.9f]];
+    
+    
+    //[(CAGradientLayer *)self.layer setLocations:[NSArray arrayWithObjects:[NSNumber numberWithFloat:0.0], [NSNumber numberWithFloat:0.48], [NSNumber numberWithFloat:1.0], nil]];
   }
   
   return self;

@@ -11,7 +11,6 @@
 		7946B8DB172910C60024200C /* SectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7946B8DA172910C60024200C /* SectionHeaderView.m */; };
 		7946B8E31729110C0024200C /* Quotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7946B8DF1729110C0024200C /* Quotation.m */; };
 		7946B8E6172911750024200C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7946B8E5172911750024200C /* QuartzCore.framework */; };
-		7946B8EC172914E40024200C /* CategoryListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7946B8EB172914E40024200C /* CategoryListViewController.m */; };
 		7947C1731743666E00F796F1 /* 37x-Checkmark.png in Resources */ = {isa = PBXBuildFile; fileRef = 7947C16F1743666E00F796F1 /* 37x-Checkmark.png */; };
 		7947C1741743666E00F796F1 /* 37x-Checkmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7947C1701743666E00F796F1 /* 37x-Checkmark@2x.png */; };
 		7947C1751743666E00F796F1 /* selectcity.png in Resources */ = {isa = PBXBuildFile; fileRef = 7947C1711743666E00F796F1 /* selectcity.png */; };
@@ -19,6 +18,11 @@
 		7947C17F17436A0C00F796F1 /* DAAppViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7947C17E17436A0C00F796F1 /* DAAppViewCell.m */; };
 		7947C18217436A3B00F796F1 /* DAAppObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 7947C18117436A3A00F796F1 /* DAAppObject.m */; };
 		794AD82C17326FCE0061C941 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 794AD82B17326FCE0061C941 /* CoreLocation.framework */; };
+		79612C4A1749B67200522DA0 /* UINavigationBar+FlatUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 79612C491749B67200522DA0 /* UINavigationBar+FlatUI.m */; };
+		79612C4D1749B68A00522DA0 /* UIImage+FlatUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 79612C4C1749B68A00522DA0 /* UIImage+FlatUI.m */; };
+		79612C501749B90000522DA0 /* UIBarButtonItem+FlatUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 79612C4F1749B90000522DA0 /* UIBarButtonItem+FlatUI.m */; };
+		79612C531749BA4700522DA0 /* UIColor+FlatUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 79612C521749BA4700522DA0 /* UIColor+FlatUI.m */; };
+		79612C591749C6BD00522DA0 /* UISearchBar+FlatUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 79612C581749C6BC00522DA0 /* UISearchBar+FlatUI.m */; };
 		7987A9BA1728C3B5003C3E53 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7987A9B91728C3B5003C3E53 /* UIKit.framework */; };
 		7987A9BC1728C3B5003C3E53 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7987A9BB1728C3B5003C3E53 /* Foundation.framework */; };
 		7987A9BE1728C3B5003C3E53 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7987A9BD1728C3B5003C3E53 /* CoreGraphics.framework */; };
@@ -26,18 +30,16 @@
 		7987A9C61728C3B5003C3E53 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7987A9C51728C3B5003C3E53 /* main.m */; };
 		7987A9CA1728C3B5003C3E53 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7987A9C91728C3B5003C3E53 /* AppDelegate.m */; };
 		7987A9D81728C3EC003C3E53 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7987A9D71728C3EC003C3E53 /* MainViewController.m */; };
-		7987A9DB1728C6B3003C3E53 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7987A9DA1728C6B3003C3E53 /* SearchViewController.m */; };
 		7987A9DE1728C7C5003C3E53 /* YuloreAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 7987A9DD1728C7C5003C3E53 /* YuloreAPI.m */; };
 		7987A9E91728C7E3003C3E53 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 7987A9E01728C7E3003C3E53 /* JSONKit.m */; };
 		7987A9EA1728C7E3003C3E53 /* POI.m in Sources */ = {isa = PBXBuildFile; fileRef = 7987A9E21728C7E3003C3E53 /* POI.m */; };
 		7987A9EB1728C7E3003C3E53 /* CityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7987A9E41728C7E3003C3E53 /* CityViewController.m */; };
 		7987A9EC1728C7E3003C3E53 /* UINavigationBar+CustomBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 7987A9E61728C7E3003C3E53 /* UINavigationBar+CustomBackground.m */; };
-		7987A9F21728C7FD003C3E53 /* DetailInfomationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7987A9EF1728C7FD003C3E53 /* DetailInfomationView.m */; };
 		7987A9F31728C7FD003C3E53 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7987A9F11728C7FD003C3E53 /* DetailViewController.m */; };
 		7987A9F61728C810003C3E53 /* YuloreAPICategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 7987A9F51728C810003C3E53 /* YuloreAPICategory.m */; };
 		7987A9F81728C835003C3E53 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7987A9F71728C835003C3E53 /* MapKit.framework */; };
+		7999C39E174CA624009734FC /* NewSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7999C39D174CA624009734FC /* NewSearchViewController.m */; };
 		79A6D8201744871100AE0604 /* AHReach.m in Sources */ = {isa = PBXBuildFile; fileRef = 79A6D81F1744871100AE0604 /* AHReach.m */; };
-		79A77E561745C26100A1F688 /* PWLoadMoreTableFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 79A77E551745C26100A1F688 /* PWLoadMoreTableFooterView.m */; };
 		79A77E591745D91100A1F688 /* ListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79A77E581745D91100A1F688 /* ListViewController.m */; };
 		79B0B3EE172B6CE600245F95 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B0B3ED172B6CE600245F95 /* MBProgressHUD.m */; };
 		79F4F51F1764262E0079F95A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79F4F51E1764262E0079F95A /* SystemConfiguration.framework */; };
@@ -53,8 +55,6 @@
 		7946B8DE1729110C0024200C /* Quotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Quotation.h; sourceTree = "<group>"; };
 		7946B8DF1729110C0024200C /* Quotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Quotation.m; sourceTree = "<group>"; };
 		7946B8E5172911750024200C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		7946B8EA172914E40024200C /* CategoryListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryListViewController.h; sourceTree = "<group>"; };
-		7946B8EB172914E40024200C /* CategoryListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryListViewController.m; sourceTree = "<group>"; };
 		7946B8ED17291A370024200C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		7947C16F1743666E00F796F1 /* 37x-Checkmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "37x-Checkmark.png"; path = "images/37x-Checkmark.png"; sourceTree = "<group>"; };
 		7947C1701743666E00F796F1 /* 37x-Checkmark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "37x-Checkmark@2x.png"; path = "images/37x-Checkmark@2x.png"; sourceTree = "<group>"; };
@@ -68,6 +68,16 @@
 		7947C18017436A3A00F796F1 /* DAAppObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAAppObject.h; sourceTree = "<group>"; };
 		7947C18117436A3A00F796F1 /* DAAppObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAAppObject.m; sourceTree = "<group>"; };
 		794AD82B17326FCE0061C941 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		79612C481749B67200522DA0 /* UINavigationBar+FlatUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+FlatUI.h"; sourceTree = "<group>"; };
+		79612C491749B67200522DA0 /* UINavigationBar+FlatUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+FlatUI.m"; sourceTree = "<group>"; };
+		79612C4B1749B68A00522DA0 /* UIImage+FlatUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+FlatUI.h"; sourceTree = "<group>"; };
+		79612C4C1749B68A00522DA0 /* UIImage+FlatUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+FlatUI.m"; sourceTree = "<group>"; };
+		79612C4E1749B90000522DA0 /* UIBarButtonItem+FlatUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+FlatUI.h"; sourceTree = "<group>"; };
+		79612C4F1749B90000522DA0 /* UIBarButtonItem+FlatUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+FlatUI.m"; sourceTree = "<group>"; };
+		79612C511749BA4700522DA0 /* UIColor+FlatUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+FlatUI.h"; sourceTree = "<group>"; };
+		79612C521749BA4700522DA0 /* UIColor+FlatUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+FlatUI.m"; sourceTree = "<group>"; };
+		79612C571749C6BC00522DA0 /* UISearchBar+FlatUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UISearchBar+FlatUI.h"; sourceTree = "<group>"; };
+		79612C581749C6BC00522DA0 /* UISearchBar+FlatUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UISearchBar+FlatUI.m"; sourceTree = "<group>"; };
 		7987A9B61728C3B5003C3E53 /* YuloreSDK.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YuloreSDK.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7987A9B91728C3B5003C3E53 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		7987A9BB1728C3B5003C3E53 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -80,8 +90,6 @@
 		7987A9C91728C3B5003C3E53 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		7987A9D61728C3EC003C3E53 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		7987A9D71728C3EC003C3E53 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
-		7987A9D91728C6B3003C3E53 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
-		7987A9DA1728C6B3003C3E53 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
 		7987A9DC1728C7C5003C3E53 /* YuloreAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YuloreAPI.h; sourceTree = "<group>"; };
 		7987A9DD1728C7C5003C3E53 /* YuloreAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YuloreAPI.m; sourceTree = "<group>"; };
 		7987A9DF1728C7E3003C3E53 /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
@@ -92,17 +100,15 @@
 		7987A9E41728C7E3003C3E53 /* CityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CityViewController.m; sourceTree = "<group>"; };
 		7987A9E51728C7E3003C3E53 /* UINavigationBar+CustomBackground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+CustomBackground.h"; sourceTree = "<group>"; };
 		7987A9E61728C7E3003C3E53 /* UINavigationBar+CustomBackground.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+CustomBackground.m"; sourceTree = "<group>"; };
-		7987A9EE1728C7FD003C3E53 /* DetailInfomationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailInfomationView.h; sourceTree = "<group>"; };
-		7987A9EF1728C7FD003C3E53 /* DetailInfomationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailInfomationView.m; sourceTree = "<group>"; };
 		7987A9F01728C7FD003C3E53 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		7987A9F11728C7FD003C3E53 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		7987A9F41728C810003C3E53 /* YuloreAPICategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YuloreAPICategory.h; sourceTree = "<group>"; };
 		7987A9F51728C810003C3E53 /* YuloreAPICategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YuloreAPICategory.m; sourceTree = "<group>"; };
 		7987A9F71728C835003C3E53 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		7999C39C174CA624009734FC /* NewSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewSearchViewController.h; sourceTree = "<group>"; };
+		7999C39D174CA624009734FC /* NewSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewSearchViewController.m; sourceTree = "<group>"; };
 		79A6D81E1744871000AE0604 /* AHReach.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHReach.h; sourceTree = "<group>"; };
 		79A6D81F1744871100AE0604 /* AHReach.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHReach.m; sourceTree = "<group>"; };
-		79A77E541745C26100A1F688 /* PWLoadMoreTableFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWLoadMoreTableFooterView.h; sourceTree = "<group>"; };
-		79A77E551745C26100A1F688 /* PWLoadMoreTableFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWLoadMoreTableFooterView.m; sourceTree = "<group>"; };
 		79A77E571745D91100A1F688 /* ListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListViewController.h; sourceTree = "<group>"; };
 		79A77E581745D91100A1F688 /* ListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListViewController.m; sourceTree = "<group>"; };
 		79B0B3EC172B6CE600245F95 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
@@ -166,54 +172,27 @@
 		7987A9BF1728C3B5003C3E53 /* YuloreSDK */ = {
 			isa = PBXGroup;
 			children = (
-				79A77E541745C26100A1F688 /* PWLoadMoreTableFooterView.h */,
-				79A77E551745C26100A1F688 /* PWLoadMoreTableFooterView.m */,
-				79A6D81E1744871000AE0604 /* AHReach.h */,
-				79A6D81F1744871100AE0604 /* AHReach.m */,
+				79A5AB17174DE6F600669D03 /* API */,
+				79A5AB14174DE60B00669D03 /* Main */,
+				7999C39C174CA624009734FC /* NewSearchViewController.h */,
+				7999C39D174CA624009734FC /* NewSearchViewController.m */,
+				79A5AB13174DB96C00669D03 /* Category */,
 				79F4F5231764262E0079F95A /* images */,
-				7947C18017436A3A00F796F1 /* DAAppObject.h */,
-				7947C18117436A3A00F796F1 /* DAAppObject.m */,
-				7947C17D17436A0C00F796F1 /* DAAppViewCell.h */,
-				7947C17E17436A0C00F796F1 /* DAAppViewCell.m */,
-				79298E34172CBE7F008E6EC0 /* TDBadgedCell.h */,
-				79298E35172CBE7F008E6EC0 /* TDBadgedCell.m */,
-				79A77E571745D91100A1F688 /* ListViewController.h */,
-				79A77E581745D91100A1F688 /* ListViewController.m */,
-				79B0B3EC172B6CE600245F95 /* MBProgressHUD.h */,
-				79B0B3ED172B6CE600245F95 /* MBProgressHUD.m */,
-				7946B8EA172914E40024200C /* CategoryListViewController.h */,
-				7946B8EB172914E40024200C /* CategoryListViewController.m */,
-				7946B8DE1729110C0024200C /* Quotation.h */,
-				7946B8DF1729110C0024200C /* Quotation.m */,
-				79F4F5241764262E0079F95A /* SectionInfo.h */,
-				79F4F5251764262E0079F95A /* SectionInfo.m */,
-				7946B8D9172910C60024200C /* SectionHeaderView.h */,
-				7946B8DA172910C60024200C /* SectionHeaderView.m */,
-				7987A9F41728C810003C3E53 /* YuloreAPICategory.h */,
-				7987A9F51728C810003C3E53 /* YuloreAPICategory.m */,
-				7987A9EE1728C7FD003C3E53 /* DetailInfomationView.h */,
-				7987A9EF1728C7FD003C3E53 /* DetailInfomationView.m */,
+				79A5AB16174DE6BB00669D03 /* List */,
 				7987A9F01728C7FD003C3E53 /* DetailViewController.h */,
 				7987A9F11728C7FD003C3E53 /* DetailViewController.m */,
+				79B0B3EC172B6CE600245F95 /* MBProgressHUD.h */,
+				79B0B3ED172B6CE600245F95 /* MBProgressHUD.m */,
 				7987A9DF1728C7E3003C3E53 /* JSONKit.h */,
 				7987A9E01728C7E3003C3E53 /* JSONKit.m */,
+				79A6D81E1744871000AE0604 /* AHReach.h */,
+				79A6D81F1744871100AE0604 /* AHReach.m */,
 				7987A9E11728C7E3003C3E53 /* POI.h */,
 				7987A9E21728C7E3003C3E53 /* POI.m */,
-				79F4F5201764262E0079F95A /* CityScrollView.h */,
-				79F4F5211764262E0079F95A /* CityScrollView.m */,
-				7987A9E31728C7E3003C3E53 /* CityViewController.h */,
-				7987A9E41728C7E3003C3E53 /* CityViewController.m */,
-				7987A9E51728C7E3003C3E53 /* UINavigationBar+CustomBackground.h */,
-				7987A9E61728C7E3003C3E53 /* UINavigationBar+CustomBackground.m */,
-				7987A9DC1728C7C5003C3E53 /* YuloreAPI.h */,
-				7987A9DD1728C7C5003C3E53 /* YuloreAPI.m */,
-				7987A9D91728C6B3003C3E53 /* SearchViewController.h */,
-				7987A9DA1728C6B3003C3E53 /* SearchViewController.m */,
+				79A5AB15174DE69400669D03 /* City */,
 				7987A9C81728C3B5003C3E53 /* AppDelegate.h */,
 				7987A9C91728C3B5003C3E53 /* AppDelegate.m */,
 				7987A9C01728C3B5003C3E53 /* Supporting Files */,
-				7987A9D61728C3EC003C3E53 /* MainViewController.h */,
-				7987A9D71728C3EC003C3E53 /* MainViewController.m */,
 			);
 			path = YuloreSDK;
 			sourceTree = "<group>";
@@ -230,6 +209,77 @@
 				7987A9C71728C3B5003C3E53 /* YuloreSDK-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		79A5AB13174DB96C00669D03 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				79612C571749C6BC00522DA0 /* UISearchBar+FlatUI.h */,
+				79612C581749C6BC00522DA0 /* UISearchBar+FlatUI.m */,
+				79612C511749BA4700522DA0 /* UIColor+FlatUI.h */,
+				79612C521749BA4700522DA0 /* UIColor+FlatUI.m */,
+				79612C4E1749B90000522DA0 /* UIBarButtonItem+FlatUI.h */,
+				79612C4F1749B90000522DA0 /* UIBarButtonItem+FlatUI.m */,
+				79612C4B1749B68A00522DA0 /* UIImage+FlatUI.h */,
+				79612C4C1749B68A00522DA0 /* UIImage+FlatUI.m */,
+				79612C481749B67200522DA0 /* UINavigationBar+FlatUI.h */,
+				79612C491749B67200522DA0 /* UINavigationBar+FlatUI.m */,
+				7987A9E51728C7E3003C3E53 /* UINavigationBar+CustomBackground.h */,
+				7987A9E61728C7E3003C3E53 /* UINavigationBar+CustomBackground.m */,
+			);
+			name = Category;
+			sourceTree = "<group>";
+		};
+		79A5AB14174DE60B00669D03 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				7946B8DE1729110C0024200C /* Quotation.h */,
+				7946B8DF1729110C0024200C /* Quotation.m */,
+				79F4F5241764262E0079F95A /* SectionInfo.h */,
+				79F4F5251764262E0079F95A /* SectionInfo.m */,
+				7946B8D9172910C60024200C /* SectionHeaderView.h */,
+				7946B8DA172910C60024200C /* SectionHeaderView.m */,
+				7987A9D61728C3EC003C3E53 /* MainViewController.h */,
+				7987A9D71728C3EC003C3E53 /* MainViewController.m */,
+			);
+			name = Main;
+			sourceTree = "<group>";
+		};
+		79A5AB15174DE69400669D03 /* City */ = {
+			isa = PBXGroup;
+			children = (
+				79F4F5201764262E0079F95A /* CityScrollView.h */,
+				79F4F5211764262E0079F95A /* CityScrollView.m */,
+				7987A9E31728C7E3003C3E53 /* CityViewController.h */,
+				7987A9E41728C7E3003C3E53 /* CityViewController.m */,
+			);
+			name = City;
+			sourceTree = "<group>";
+		};
+		79A5AB16174DE6BB00669D03 /* List */ = {
+			isa = PBXGroup;
+			children = (
+				7947C18017436A3A00F796F1 /* DAAppObject.h */,
+				7947C18117436A3A00F796F1 /* DAAppObject.m */,
+				7947C17D17436A0C00F796F1 /* DAAppViewCell.h */,
+				7947C17E17436A0C00F796F1 /* DAAppViewCell.m */,
+				79298E34172CBE7F008E6EC0 /* TDBadgedCell.h */,
+				79298E35172CBE7F008E6EC0 /* TDBadgedCell.m */,
+				79A77E571745D91100A1F688 /* ListViewController.h */,
+				79A77E581745D91100A1F688 /* ListViewController.m */,
+			);
+			name = List;
+			sourceTree = "<group>";
+		};
+		79A5AB17174DE6F600669D03 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				7987A9F41728C810003C3E53 /* YuloreAPICategory.h */,
+				7987A9F51728C810003C3E53 /* YuloreAPICategory.m */,
+				7987A9DC1728C7C5003C3E53 /* YuloreAPI.h */,
+				7987A9DD1728C7C5003C3E53 /* YuloreAPI.m */,
+			);
+			name = API;
 			sourceTree = "<group>";
 		};
 		79F4F5231764262E0079F95A /* images */ = {
@@ -313,18 +363,15 @@
 				7987A9C61728C3B5003C3E53 /* main.m in Sources */,
 				7987A9CA1728C3B5003C3E53 /* AppDelegate.m in Sources */,
 				7987A9D81728C3EC003C3E53 /* MainViewController.m in Sources */,
-				7987A9DB1728C6B3003C3E53 /* SearchViewController.m in Sources */,
 				7987A9DE1728C7C5003C3E53 /* YuloreAPI.m in Sources */,
 				7987A9E91728C7E3003C3E53 /* JSONKit.m in Sources */,
 				7987A9EA1728C7E3003C3E53 /* POI.m in Sources */,
 				7987A9EB1728C7E3003C3E53 /* CityViewController.m in Sources */,
 				7987A9EC1728C7E3003C3E53 /* UINavigationBar+CustomBackground.m in Sources */,
-				7987A9F21728C7FD003C3E53 /* DetailInfomationView.m in Sources */,
 				7987A9F31728C7FD003C3E53 /* DetailViewController.m in Sources */,
 				7987A9F61728C810003C3E53 /* YuloreAPICategory.m in Sources */,
 				7946B8DB172910C60024200C /* SectionHeaderView.m in Sources */,
 				7946B8E31729110C0024200C /* Quotation.m in Sources */,
-				7946B8EC172914E40024200C /* CategoryListViewController.m in Sources */,
 				79B0B3EE172B6CE600245F95 /* MBProgressHUD.m in Sources */,
 				79298E36172CBE7F008E6EC0 /* TDBadgedCell.m in Sources */,
 				79F4F5221764262E0079F95A /* CityScrollView.m in Sources */,
@@ -332,8 +379,13 @@
 				7947C17F17436A0C00F796F1 /* DAAppViewCell.m in Sources */,
 				7947C18217436A3B00F796F1 /* DAAppObject.m in Sources */,
 				79A6D8201744871100AE0604 /* AHReach.m in Sources */,
-				79A77E561745C26100A1F688 /* PWLoadMoreTableFooterView.m in Sources */,
 				79A77E591745D91100A1F688 /* ListViewController.m in Sources */,
+				79612C4A1749B67200522DA0 /* UINavigationBar+FlatUI.m in Sources */,
+				79612C4D1749B68A00522DA0 /* UIImage+FlatUI.m in Sources */,
+				79612C501749B90000522DA0 /* UIBarButtonItem+FlatUI.m in Sources */,
+				79612C531749BA4700522DA0 /* UIColor+FlatUI.m in Sources */,
+				79612C591749C6BD00522DA0 /* UISearchBar+FlatUI.m in Sources */,
+				7999C39E174CA624009734FC /* NewSearchViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

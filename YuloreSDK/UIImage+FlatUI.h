@@ -26,7 +26,9 @@
 
 + (UIImage *) stepperPlusImageWithColor:(UIColor *)color;
 + (UIImage *) stepperMinusImageWithColor:(UIColor *)color;
-
++ (UIImage *) cancelButtonImageWithColor:(UIColor *)color
+                              barMetrics:(UIBarMetrics) metrics
+                            cornerRadius:(CGFloat)cornerRadius;
 + (UIImage *) backButtonImageWithColor:(UIColor *)color
                             barMetrics:(UIBarMetrics) metrics
                           cornerRadius:(CGFloat)cornerRadius;

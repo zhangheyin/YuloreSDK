@@ -30,6 +30,13 @@ CGFloat edgeSizeFromCornerRadius(CGFloat cornerRadius) {
     return [image resizableImageWithCapInsets:UIEdgeInsetsMake(cornerRadius, cornerRadius, cornerRadius, cornerRadius)];
 }
 
+
+
+
+
+
+
+
 + (UIImage *) buttonImageWithColor:(UIColor *)color
                       cornerRadius:(CGFloat)cornerRadius
                        shadowColor:(UIColor *)shadowColor
@@ -104,7 +111,79 @@ CGFloat edgeSizeFromCornerRadius(CGFloat cornerRadius) {
     UIGraphicsEndImageContext();
     return image;
 }
+#define CGPointWithOffset(originPoint, offsetPoint) \
+CGPointMake(originPoint.x + offsetPoint.x, originPoint.y + offsetPoint.y)
 
+// cross
+//
+//                /---> thick |
+//     b       d /            |      b
+//   a/ \     / \e            |     /|\
+//    \  \   /  /             |    / |_/----> offset = thick / √2
+//     \  \c/  /              |  a/__|  \
+//      \     /               |   \      \
+//       \l f/                |___________________________________
+//       /   \                |
+//      /  i  \               |      c  /---> thick
+//     /  / \  \              |      |\/
+//   k/  /   \  \g            |   l  |_\f
+//    \ /     \ /             |       \----> offset
+//     j       h              |      i
+//
++ (UIBezierPath *)customBezierPathOfCrossSymbolWithRect:(CGRect)rect
+                                                  scale:(CGFloat)scale
+                                                  thick:(CGFloat)thick {
+  CGFloat height     = CGRectGetHeight(rect) * scale;
+  CGFloat width      = CGRectGetWidth(rect)  * scale;
+  CGFloat halfHeight = height / 2.f;
+  CGFloat halfWidth  = width  / 2.f;
+  CGFloat size       = height < width ? height : width;
+  CGFloat offset     = thick / sqrt(2.f);
+  
+  CGPoint offsetPoint =
+  CGPointMake(CGRectGetMinX(rect) + (CGRectGetWidth(rect)  - size) / 2.f,
+              CGRectGetMinY(rect) + (CGRectGetHeight(rect) - size) / 2.f);
+  
+  UIBezierPath * path = [UIBezierPath bezierPath];
+  [path moveToPoint:CGPointWithOffset(CGPointMake(0.f, offset), offsetPoint)];                       // a
+  [path addLineToPoint:CGPointWithOffset(CGPointMake(offset, 0.f), offsetPoint)];                    // b
+  [path addLineToPoint:CGPointWithOffset(CGPointMake(halfWidth, halfHeight - offset), offsetPoint)]; // c
+  [path addLineToPoint:CGPointWithOffset(CGPointMake(width - offset, 0.f), offsetPoint)];            // d
+  [path addLineToPoint:CGPointWithOffset(CGPointMake(width, offset), offsetPoint)];                  // e
+  [path addLineToPoint:CGPointWithOffset(CGPointMake(halfWidth + offset, halfHeight), offsetPoint)]; // f
+  [path addLineToPoint:CGPointWithOffset(CGPointMake(width, height - offset), offsetPoint)];         // g
+  [path addLineToPoint:CGPointWithOffset(CGPointMake(width - offset, height), offsetPoint)];         // h
+  [path addLineToPoint:CGPointWithOffset(CGPointMake(halfWidth, halfHeight + offset), offsetPoint)]; // i
+  [path addLineToPoint:CGPointWithOffset(CGPointMake(offset, height), offsetPoint)];                 // j
+  [path addLineToPoint:CGPointWithOffset(CGPointMake(0.f, height - offset), offsetPoint)];           // k
+  [path addLineToPoint:CGPointWithOffset(CGPointMake(halfWidth - offset, halfHeight), offsetPoint)]; // l
+  [path closePath];
+  return path;
+}
+
+
+
++ (UIImage *) cancelButtonImageWithColor:(UIColor *)color
+                              barMetrics:(UIBarMetrics) metrics
+                            cornerRadius:(CGFloat)cornerRadius {
+  CGSize size;
+  if (metrics == UIBarMetricsDefault) {
+    size = CGSizeMake(26, 26);
+  }
+  else {
+    size = CGSizeMake(60, 23);
+  }
+  UIBezierPath *path = [self customBezierPathOfCrossSymbolWithRect:CGRectMake(0, 0, size.width, size.height) scale:1.f thick:4.f];
+  //UIBezierPath *path = [self bezierPathForBackButtonInRect:CGRectMake(0, 0, size.width, size.height) cornerRadius:cornerRadius];
+  UIGraphicsBeginImageContextWithOptions(size, NO, 0.0f);
+  [color setFill];
+  [path addClip];
+  [path fill];
+  UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+  UIGraphicsEndImageContext();
+  return image;//[image resizableImageWithCapInsets:UIEdgeInsetsMake(cornerRadius, 65, cornerRadius, cornerRadius)];
+
+}
 + (UIImage *) backButtonImageWithColor:(UIColor *)color
                             barMetrics:(UIBarMetrics) metrics
                           cornerRadius:(CGFloat)cornerRadius {
@@ -116,6 +195,7 @@ CGFloat edgeSizeFromCornerRadius(CGFloat cornerRadius) {
     else {
         size = CGSizeMake(60, 23);
     }
+
     UIBezierPath *path = [self bezierPathForBackButtonInRect:CGRectMake(0, 0, size.width, size.height) cornerRadius:cornerRadius];
     UIGraphicsBeginImageContextWithOptions(size, NO, 0.0f);
     [color setFill];
@@ -127,7 +207,9 @@ CGFloat edgeSizeFromCornerRadius(CGFloat cornerRadius) {
     
 }
 
-+ (UIBezierPath *) bezierPathForBackButtonInRect:(CGRect)rect cornerRadius:(CGFloat)radius {
+
++ (UIBezierPath *) bezierPathForBackButtonInRect:(CGRect)rect
+                                    cornerRadius:(CGFloat)radius {
     UIBezierPath *path = [UIBezierPath bezierPath];
     CGPoint mPoint = CGPointMake(CGRectGetMaxX(rect) - radius, rect.origin.y);
     CGPoint ctrlPoint = mPoint;

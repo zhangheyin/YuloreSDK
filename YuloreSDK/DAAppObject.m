@@ -12,17 +12,17 @@
 
 #pragma mark - Equality methods
 
-- (BOOL)isEqual:(id)other
-{
-  if (!other || ![other isKindOfClass:[self class]])
-  {
-    return NO;
-  }
-  else
-  {
-    return [self isEqualToAppObject:other];
-  }
-}
+//- (BOOL)isEqual:(id)other
+//{
+//  if (!other || ![other isKindOfClass:[self class]])
+//  {
+//    return NO;
+//  }
+//  else
+//  {
+//    return [self isEqualToAppObject:other];
+//  }
+//}
 //
 //- (BOOL)isEqualToAppObject:(DAAppObject *)appObject
 //{
